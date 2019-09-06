@@ -1,10 +1,11 @@
 package Mapa;
 import java.util.*;
+import Objetos.GameObject;
 
 public class Celda {
-   protected List<Object> Contenido;  
+   protected List<GameObject> Contenido;  
    
    public Celda() {
-	   Contenido= new LinkedList<Object>();
+	   Contenido= new LinkedList<GameObject>();
    }
 }
