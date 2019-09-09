@@ -1,4 +1,3 @@
 # TowerDefenceTDP
 Repositorio para el proyecto de Tower Defence de TDP.
-jjlkjkljjkkjl
-Soy la presi haganme caso :(((
+TEO SOS UNA TERRIBLE PUTA Y TU MARIDO UN TERRIBLE CORNUDO NO TE ACORDAS CUANDO MI HERMANO TE LLENABA EL CULO DE LECHE
