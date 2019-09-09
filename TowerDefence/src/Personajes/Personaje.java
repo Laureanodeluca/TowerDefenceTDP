@@ -1,5 +1,4 @@
 package Personajes;
-
-public abstract class Personaje
-{
+import Objetos.*;
+public abstract class Personaje extends GameObject {
 }
