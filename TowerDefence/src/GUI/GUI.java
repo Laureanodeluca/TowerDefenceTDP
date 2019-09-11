@@ -38,7 +38,7 @@ public class GUI extends JFrame{
 	*/
 		for(int i=0; i<mTablero.length; i++) {
 			for(int j=0; j<mTablero[0].length; j++) {
-				mTablero[i][j].addActionListener(new OyenteBoton());
+				mTablero[i][j].addActionListener(new OyenteBoton(i, j));
 
 			}
 		}	
@@ -137,9 +137,19 @@ public class GUI extends JFrame{
 //-------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI---------------------------------------/
 
 	private class OyenteBoton implements ActionListener{
+	    int i;
+	    int j;
+	    Icon icon=new ImageIcon("src/main/resources/idle1.png");
+	    public OyenteBoton(int x, int y)
+	    {
+	    	i = x;
+	    	j = y;
+	    }
 	    
 	    public void actionPerformed(ActionEvent e){
-	    	mTablero[1][1].setBackground(new Color(120,100,120)); //ojo con esto!!!!!!!!!!!!!!!!!!!!!!!1
+	    	//mTablero[i][j].setBackground(new Color(120,100,120));
+
+	    	mTablero[i][j].setIcon(icon);
 	    }
 	}
 }
