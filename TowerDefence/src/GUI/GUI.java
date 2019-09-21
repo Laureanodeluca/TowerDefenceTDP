@@ -7,10 +7,12 @@ import java.awt.Color;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI extends JFrame{
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
-	private JButton [][] mTablero;
+	//private JButton [][] mTablero;
 	private JButton [] torres;
 	private JPanel Tablero;
 	private JPanel Botonera;
@@ -24,7 +26,7 @@ public class GUI extends JFrame{
 	public GUI() {		
 		super("Tower Defense");
 		inicializarGUI();
-		inicializarCeldas();
+		//inicializarCeldas();
 		inicializarBotoneraTorre();
 		inicializarBotonesTorres();
 		inicializarPanelMonedas();
@@ -36,14 +38,17 @@ public class GUI extends JFrame{
 		mTablero[1][1].addActionListener(new OyenteBoton());
 		mTablero[1][2].addActionListener(new OyenteBoton());
 	*/
+	/*
 		for(int i=0; i<mTablero.length; i++) {
 			for(int j=0; j<mTablero[0].length; j++) {
 				mTablero[i][j].addActionListener(new OyenteBoton(i, j));
 
 			}
-		}	
+		}
+	*/	
 
 	}
+	
 //-----------------------Constructor------------------------------------------------------------------------/	
 
 	private void inicializarGUI() {
@@ -53,20 +58,13 @@ public class GUI extends JFrame{
 		Tablero = new JPanel();
 		Tablero.setLayout(new GridLayout(6,15));
 		Tablero.setBorder(new LineBorder(new Color(0, 0, 0)));
-		Tablero.setBounds(0, 0, 1182, 529);
-		getContentPane().add(Tablero);		
+		Tablero.setBounds(0, 0, 1182, 530);
+		getContentPane().add(Tablero);	
+		Tablero.addMouseListener(new insertarTorre());
+		
+		
 	}
 	
-	private void inicializarCeldas() {
-		mTablero = new JButton[6][15];
-		for(int i=0; i<mTablero.length; i++) {
-			for(int j=0; j<mTablero[0].length; j++) {
-				mTablero[i][j] = new JButton();
-				mTablero[i][j].setBackground(Color.BLACK);
-				Tablero.add(mTablero[i][j]);
-			}
-		}
-	}
 	
 //---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
 		
@@ -134,37 +132,42 @@ public class GUI extends JFrame{
 			}
 		});
 	}
-//-------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI---------------------------------------/
-
-	private class OyenteBoton implements ActionListener{
-	    int i;
-	    int j;
-	    Icon icon=new ImageIcon("src/main/resources/idle1.png");
-	    public OyenteBoton(int x, int y)
-	    {
-	    	i = x;
-	    	j = y;
-	    }
-	    
-	    public void actionPerformed(ActionEvent e){
-	    	//mTablero[i][j].setBackground(new Color(120,100,120));
-
-	    	mTablero[i][j].setIcon(icon);
-	    }
+	
+	private int acomodarX(int x, int ancho)
+	{
+		int anchoCelda = Tablero.getWidth()/ancho;
+		int posX = x/anchoCelda;
+		posX = posX*anchoCelda + anchoCelda/2;
+		return posX-anchoCelda/3;
+	}
+	
+	private int acomodarY(int y, int largo)
+	{
+		int largoCelda = Tablero.getHeight()/largo;
+		int posY = y/largoCelda;
+		posY = posY*largoCelda + largoCelda/2;
+		return posY-largoCelda/3;
+	}
+	
+	class insertarTorre extends MouseAdapter
+	{		
+		Icon icon = new ImageIcon("src/main/resources/idle1.png");
+		
+		
+		public void mouseClicked(MouseEvent e)
+		{
+			
+			int x = e.getX();
+			int y = e.getY();
+			JLabel lab = new JLabel(icon);
+			Tablero.add(lab);
+			lab.setBounds(acomodarX(x,10),acomodarY(y,6),75,85);
+			
+		}
 	}
 }
+//-------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI---------------------------------------/
 
-
-/* 
- * oyente de boton B que tiene pos x e y.
- * 
- * Enemigo fantasma = new fantasma(x,y)
- * miboton.setIcon(fantasma.getGrafico().getsprite())
- * Mapa mi mapa mapa.addGO(fantasma)
- * 
- * 
- * 
- */
 
 
     

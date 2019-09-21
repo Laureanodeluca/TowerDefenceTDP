@@ -8,4 +8,9 @@ public class Celda {
    public Celda() {
 	   Contenido= new LinkedList<GameObject>();
    }
+   
+   public void addGameObject(GameObject o)
+   {
+	   Contenido.add(o);
+   }
 }
