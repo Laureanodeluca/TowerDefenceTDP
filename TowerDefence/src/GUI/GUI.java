@@ -19,63 +19,72 @@ public class GUI extends JFrame{
 	private JPanel Monedas;
 	private JLabel LabelMonedas;
 	private JLabel cantMonedas;
-	
+	private static final int CANT_X = 10;
+	private static final int CANT_Y = 6;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
 	
 //-----------------------Constructor------------------------------------------------------------------------/	
 	public GUI() {		
 		super("Tower Defense");
+		setAutoRequestFocus(false);
+		setForeground(Color.WHITE);
 		inicializarGUI();
-		//inicializarCeldas();
 		inicializarBotoneraTorre();
 		inicializarBotonesTorres();
 		inicializarPanelMonedas();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 700);
 		setVisible(true);
-		
-	/*	
-		mTablero[1][1].addActionListener(new OyenteBoton());
-		mTablero[1][2].addActionListener(new OyenteBoton());
-	*/
-	/*
-		for(int i=0; i<mTablero.length; i++) {
-			for(int j=0; j<mTablero[0].length; j++) {
-				mTablero[i][j].addActionListener(new OyenteBoton(i, j));
-
-			}
-		}
-	*/	
-
 	}
-	
+		
 //-----------------------Constructor------------------------------------------------------------------------/	
 
 	private void inicializarGUI() {
-		Color fondo = new Color(0,0,0); //color de fondo de las componentes, negro
-		
-		//panel de celdas
 		Tablero = new JPanel();
-		Tablero.setLayout(new GridLayout(6,15));
+		Tablero.setOpaque(false);
 		Tablero.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Tablero.setBounds(0, 0, 1182, 530);
-		getContentPane().add(Tablero);	
+		Tablero.setBackground(Color.WHITE);
+		getContentPane().add(Tablero);
+		Tablero.setLayout(null);
 		Tablero.addMouseListener(new insertarTorre());
-		
-		
-	}
-	
-	
-//---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
-		
-	private void inicializarBotoneraTorre() {
-		getContentPane().setLayout(null);		
 		Botonera = new JPanel();
 		Botonera.setLayout(new GridLayout(1,5));
 		Botonera.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Botonera.setLayout(new GridLayout());
 		Botonera.setBounds(0, 529, 789, 124);
 		getContentPane().add(Botonera);
+		Monedas = new JPanel();
+		Monedas.setBorder(new LineBorder(new Color(0, 0, 0)));
+		Monedas.setBounds(789, 529, 393, 124);
+		getContentPane().add(Monedas);
+		Monedas.setLayout(null);
+		{
+			LabelMonedas = new JLabel("Monedas Disponibles:");
+			LabelMonedas.setBounds(244, 0, 149, 37);
+			Monedas.add(LabelMonedas);
+		}
+		{
+			cantMonedas = new JLabel("New label");
+			cantMonedas.setBounds(244, 37, 99, 37);
+			Monedas.add(cantMonedas);
+		}
+	}
+	
+	
+	
+//---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
+		
+	private void inicializarBotoneraTorre() {
+		getContentPane().setLayout(null);		
+		
+		JPanel Fondo = new JPanel();
+		Fondo.setBounds(0, -10, 1182, 530);
+		getContentPane().add(Fondo);
+		
+		JLabel Background = new JLabel("");
+		Background.setIcon(new ImageIcon("C:\\Users\\Laureano\\Documents\\GitHub\\TowerDefenceTDP\\TowerDefence\\src\\Main\\resources\\Mapa.jpg"));
+		Fondo.add(Background);
 	}
 	
 	private void inicializarBotonesTorres() {
@@ -95,21 +104,6 @@ public class GUI extends JFrame{
 
 	
 	private void inicializarPanelMonedas() {
-		Monedas = new JPanel();
-		Monedas.setBorder(new LineBorder(new Color(0, 0, 0)));
-		Monedas.setBounds(789, 529, 393, 124);
-		getContentPane().add(Monedas);
-		Monedas.setLayout(null);
-		{
-			LabelMonedas = new JLabel("Monedas Disponibles:");
-			LabelMonedas.setBounds(244, 0, 149, 37);
-			Monedas.add(LabelMonedas);
-		}
-		{
-			cantMonedas = new JLabel("New label");
-			cantMonedas.setBounds(244, 37, 99, 37);
-			Monedas.add(cantMonedas);
-		}
 	}
 	
 	private void mostrarMonedas() {
@@ -161,13 +155,8 @@ public class GUI extends JFrame{
 			int y = e.getY();
 			JLabel lab = new JLabel(icon);
 			Tablero.add(lab);
-			lab.setBounds(acomodarX(x,10),acomodarY(y,6),75,85);
+			lab.setBounds(acomodarX(x,CANT_X),acomodarY(y,CANT_Y),75,85);
 			
 		}
 	}
-}
-//-------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI---------------------------------------/
-
-
-
-    
+}    
