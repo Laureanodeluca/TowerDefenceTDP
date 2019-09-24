@@ -3,13 +3,16 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import Objetos.GameObject;
+import Personajes.PlantaEscupeFuego;
+
 import java.awt.Color;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class GUI extends JFrame{
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
 	//private JButton [][] mTablero;
@@ -31,7 +34,7 @@ public class GUI extends JFrame{
 		inicializarGUI();
 		inicializarBotoneraTorre();
 		inicializarBotonesTorres();
-		inicializarPanelMonedas();
+		//inicializarPanelMonedas();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 700);
 		setVisible(true);
@@ -102,13 +105,15 @@ public class GUI extends JFrame{
 	
 //---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
 
-	
+	/**
 	private void inicializarPanelMonedas() {
 	}
 	
-	private void mostrarMonedas() {
+	private void mostrarMonedas() 
+	{	
 		
 	}
+	**/
 
 //---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
 
@@ -144,18 +149,13 @@ public class GUI extends JFrame{
 	}
 	
 	class insertarTorre extends MouseAdapter
-	{		
-		Icon icon = new ImageIcon("src/main/resources/idle1.png");
-		
-		
+	{				
 		public void mouseClicked(MouseEvent e)
 		{
-			
-			int x = e.getX();
-			int y = e.getY();
-			JLabel lab = new JLabel(icon);
+			GameObject plant = new PlantaEscupeFuego(e.getX(),e.getY());
+			JLabel lab = new JLabel(plant.getSprite());
 			Tablero.add(lab);
-			lab.setBounds(acomodarX(x,CANT_X),acomodarY(y,CANT_Y),75,85);
+			lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
 			
 		}
 	}
