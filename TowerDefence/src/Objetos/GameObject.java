@@ -53,14 +53,6 @@ public abstract class GameObject
 	public void setY(int j){
 		y = j;
 	}
-	
-	/**
-	 * Mueve j espacios al objeto sobre el eje x.
-	 * @param j cantidad de espacios movidos.
-	 */
-	public void mover(int j){
-		x = x + j;
-	}
 	//GameObjectGrafico miGrafico; 
 	// sprites de cada object en particas. mover()
 }

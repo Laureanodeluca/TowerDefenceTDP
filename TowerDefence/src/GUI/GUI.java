@@ -4,8 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import Main.Juego;
 import Objetos.GameObject;
-import Personajes.PlantaEscupeFuego;
+//import Personajes.PlantaEscupeFuego;
+import Personajes.*;
 
 import java.awt.Color;
 import java.awt.*;
@@ -24,6 +26,9 @@ public class GUI extends JFrame{
 	private JLabel cantMonedas;
 	private static final int CANT_X = 10;
 	private static final int CANT_Y = 6;
+	private Juego j;
+	private ContadorTiempo tiempo;
+	private JLabel displayMonedas;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
 	
 //-----------------------Constructor------------------------------------------------------------------------/	
@@ -38,7 +43,23 @@ public class GUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 700);
 		setVisible(true);
+		
+		j = new Juego(this);
+		tiempo = new ContadorTiempo(j);
+		insertarEnemigo();
+		tiempo.start();
 	}
+	
+	public void insertarEnemigo()
+	{
+		Fantasma en = (Fantasma) j.getEnemy();
+		en.getLabel().setBounds(acomodarX(en.getX(),CANT_X),acomodarY(en.getY(),CANT_Y),75,85);
+		Tablero.add(en.getLabel());
+		System.out.println("Enemigo Insertado!");
+	}
+	
+	
+	
 		
 //-----------------------Constructor------------------------------------------------------------------------/	
 
@@ -51,6 +72,7 @@ public class GUI extends JFrame{
 		getContentPane().add(Tablero);
 		Tablero.setLayout(null);
 		Tablero.addMouseListener(new insertarTorre());
+		Tablero.addMouseListener(new eliminarEnemigo());
 		Botonera = new JPanel();
 		Botonera.setLayout(new GridLayout(1,5));
 		Botonera.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -64,14 +86,19 @@ public class GUI extends JFrame{
 		Monedas.setLayout(null);
 		{
 			LabelMonedas = new JLabel("Monedas Disponibles:");
-			LabelMonedas.setBounds(244, 0, 149, 37);
+			LabelMonedas.setBounds(176, 0, 110, 37);
 			Monedas.add(LabelMonedas);
 		}
 		{
 			cantMonedas = new JLabel("New label");
-			cantMonedas.setBounds(244, 37, 99, 37);
+			cantMonedas.setBounds(176, 48, 99, 37);
 			Monedas.add(cantMonedas);
 		}
+		
+		displayMonedas = new JLabel("0");
+		displayMonedas.setEnabled(false);
+		displayMonedas.setBounds(296, 11, 46, 14);
+		Monedas.add(displayMonedas);
 	}
 	
 	
@@ -105,15 +132,6 @@ public class GUI extends JFrame{
 	
 //---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
 
-	/**
-	private void inicializarPanelMonedas() {
-	}
-	
-	private void mostrarMonedas() 
-	{	
-		
-	}
-	**/
 
 //---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
 
@@ -148,15 +166,39 @@ public class GUI extends JFrame{
 		return posY-largoCelda/3;
 	}
 	
+	protected void mover()
+	{
+		j.moverPersonaje();
+		this.repaint();
+	}
+	
+	
 	class insertarTorre extends MouseAdapter
 	{				
 		public void mouseClicked(MouseEvent e)
 		{
-			GameObject plant = new PlantaEscupeFuego(e.getX(),e.getY());
-			JLabel lab = new JLabel(plant.getSprite());
-			Tablero.add(lab);
-			lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
+			if (e.getButton() == MouseEvent.BUTTON1)
+			{
+				GameObject plant = new PlantaEscupeFuego(e.getX(),e.getY());
+				JLabel lab = new JLabel(plant.getSprite());
+				Tablero.add(lab);
+				lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
+			}
 			
+		}
+	}
+	
+	class eliminarEnemigo extends MouseAdapter
+	{
+		public void mouseClicked(MouseEvent e)
+		{
+			if(e.getButton() == MouseEvent.BUTTON3)
+			{
+				int cantMonedas = Integer.parseInt(displayMonedas.getText());
+				cantMonedas = cantMonedas + j.getEnemy().getMonedas();
+				displayMonedas.setText(""+cantMonedas);
+				j.killCharacter();
+			}
 		}
 	}
 }    
