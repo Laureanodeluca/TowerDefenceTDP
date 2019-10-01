@@ -29,6 +29,7 @@ public class GUI extends JFrame{
 	private Juego j;
 	private ContadorTiempo tiempo;
 	private JLabel displayMonedas;
+	private FactoryPersonajes f;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
 	
 //-----------------------Constructor------------------------------------------------------------------------/	
@@ -179,7 +180,8 @@ public class GUI extends JFrame{
 		{
 			if (e.getButton() == MouseEvent.BUTTON1)
 			{
-				GameObject plant = new PlantaEscupeFuego(e.getX(),e.getY());
+				f= new FabricaPersonaje();
+				GameObject plant = f.PlantaEscupeFuego(e.getX(),e.getY());
 				JLabel lab = new JLabel(plant.getSprite());
 				Tablero.add(lab);
 				lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
