@@ -8,7 +8,7 @@ public class Juego
 	
 	public Juego(GUI gui)
 	{
-		this.p = new Fantasma(1200,250);
+		this.p = new Fantasma(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
 	}
 	

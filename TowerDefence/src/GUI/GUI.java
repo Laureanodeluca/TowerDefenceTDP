@@ -85,7 +85,7 @@ public class GUI extends JFrame{
 		getContentPane().add(Monedas);
 		Monedas.setLayout(null);
 		{
-			LabelMonedas = new JLabel("Monedas Disponibles:");
+			LabelMonedas = new JLabel("Monedas:");
 			LabelMonedas.setBounds(176, 0, 110, 37);
 			Monedas.add(LabelMonedas);
 		}
@@ -97,7 +97,7 @@ public class GUI extends JFrame{
 		
 		displayMonedas = new JLabel("0");
 		displayMonedas.setEnabled(false);
-		displayMonedas.setBounds(296, 11, 46, 14);
+		displayMonedas.setBounds(236, 11, 46, 14);
 		Monedas.add(displayMonedas);
 	}
 	
@@ -113,7 +113,7 @@ public class GUI extends JFrame{
 		getContentPane().add(Fondo);
 		
 		JLabel Background = new JLabel("");
-		Background.setIcon(new ImageIcon("C:\\Users\\Laureano\\Documents\\GitHub\\TowerDefenceTDP\\TowerDefence\\src\\Main\\resources\\Mapa.jpg"));
+		Background.setIcon(new ImageIcon("src/Main/resources/Mapa.jpg"));
 		Fondo.add(Background);
 	}
 	
@@ -150,7 +150,7 @@ public class GUI extends JFrame{
 		});
 	}
 	
-	private int acomodarX(int x, int ancho)
+	public int acomodarX(int x, int ancho)
 	{
 		int anchoCelda = Tablero.getWidth()/ancho;
 		int posX = x/anchoCelda;
@@ -158,7 +158,7 @@ public class GUI extends JFrame{
 		return posX-anchoCelda/3;
 	}
 	
-	private int acomodarY(int y, int largo)
+	public int acomodarY(int y, int largo)
 	{
 		int largoCelda = Tablero.getHeight()/largo;
 		int posY = y/largoCelda;
