@@ -20,6 +20,7 @@ public class Fantasma extends Enemigo
 		this.velocidadDeMovimiento = 25;
 		this.rango = 0;
 		this.label = new JLabel(sprite);
+		this.movimientoOriginal = 25;
 	}	
 	
 

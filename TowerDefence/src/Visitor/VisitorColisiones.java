@@ -3,7 +3,7 @@ package Visitor;
 import Personajes.Enemigo;
 import Personajes.Personaje;
 
-public class VisitorEnemigo extends Visitor
+public class VisitorColisiones extends Visitor
 {
 
 	@Override
@@ -16,7 +16,5 @@ public class VisitorEnemigo extends Visitor
 	public void visitarEnemigo(Enemigo e)
 	{
 		e.setVelocidadDeMovimiento(0);
-		//e.mover(-150);
 	}
-
 }

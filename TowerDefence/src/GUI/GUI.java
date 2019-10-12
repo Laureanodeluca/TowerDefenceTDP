@@ -7,7 +7,7 @@ import javax.swing.border.LineBorder;
 import Main.Juego;
 import Objetos.GameObject;
 import Personajes.*;
-import Visitor.*;
+//import Visitor.*;
 
 import java.awt.Color;
 import java.awt.*;
@@ -73,7 +73,8 @@ public class GUI extends JFrame{
 		getContentPane().add(Tablero);
 		Tablero.setLayout(null);
 		Tablero.addMouseListener(new insertarTorre());
-		Tablero.addMouseListener(new eliminarEnemigo());
+		//Tablero.addMouseListener(new eliminarEnemigo());
+		Tablero.addMouseListener(new eliminarTorre());
 		Botonera = new JPanel();
 		Botonera.setLayout(new GridLayout(1,5));
 		Botonera.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -164,7 +165,7 @@ public class GUI extends JFrame{
 		int largoCelda = Tablero.getHeight()/largo;
 		int posY = y/largoCelda;
 		posY = posY*largoCelda + largoCelda/2;
-		return posY-largoCelda/3;
+		return (posY-largoCelda/9);
 	}
 	
 	class insertarTorre extends MouseAdapter
@@ -174,17 +175,17 @@ public class GUI extends JFrame{
 			if (e.getButton() == MouseEvent.BUTTON1)
 			{
 				f= new FabricaPersonaje();
-				GameObject plant = f.PlantaEscupeFuego(e.getX(),e.getY());
+				GameObject plant = f.PlantaEscupeFuego(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
 				j.insertarTorre(plant);
-				//System.out.println("Insertado!");
 				JLabel lab = new JLabel(plant.getSprite());
 				Tablero.add(lab);
-				lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
+				lab.setBounds(plant.getX(),plant.getY(),75,85);
 			}
 			
 		}
 	}
 	
+	/**
 	class eliminarEnemigo extends MouseAdapter
 	{
 		public void mouseClicked(MouseEvent e)
@@ -195,6 +196,20 @@ public class GUI extends JFrame{
 				cantMonedas = cantMonedas + j.getEnemy().getMonedas();
 				displayMonedas.setText(""+cantMonedas);
 				j.killCharacter();
+			}
+		}
+	}**/
+	
+	class eliminarTorre extends MouseAdapter
+	{
+		public void mouseClicked(MouseEvent e)
+		{
+			if(e.getButton() == MouseEvent.BUTTON3)
+			{
+				j.getTorre(0).cambiarLabel(null);
+				j.getTorre(0).setLabel(null);
+				Tablero.repaint();
+				j.killTower(j.getCantTorres()-1);
 			}
 		}
 	}

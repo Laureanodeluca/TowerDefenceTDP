@@ -7,18 +7,51 @@ public abstract class GameObject
 	protected Icon sprite;
 	protected int x, y;
 	protected Visitor miVisitor;
+	protected JLabel label = new JLabel();
 
+
+	/**
+	 * Retorna el JLabel con el sprite del objeto.
+	 * @return Sprite con el JLabel del enemigo.
+	 */
+	public JLabel getLabel()
+	{
+		if(this.label == null){
+			this.label = new JLabel(sprite);
+			this.label.setBounds(x, y, 100, 100);
+		}
+		
+		return this.label;
+	}
 	
 	/**
-	 * Retorna el sprite del personaje.
-	 * @return Sprite del personaje.
+	 * Establece la etiqueta del objeto.
+	 * @param l Nueva etiqueta.
+	 */
+	public void setLabel(JLabel l)
+	{
+		label = l;
+	}
+	
+	/**
+	 * Cambia el label y la ubicacion del objeto.
+	 * @param i Nuevo icono del label.
+	 */
+	public void cambiarLabel(Icon i){
+		this.label.setIcon(i);
+		this.label.setLocation(x+20, y+18);
+	}
+	
+	/**
+	 * Retorna el sprite del objeto.
+	 * @return Sprite del objeto.
 	 */
 	public Icon getSprite(){
 		return sprite;
 	}
 	
 	/**
-	 * Retorna la posición X del personaje en el mapa.
+	 * Retorna la posición X del objeto en el mapa.
 	 * @return entero que denota la posición X en el mapa.
 	 */
 	public int getX(){
@@ -62,6 +95,10 @@ public abstract class GameObject
 	 * @param v Visitor.
 	 */
 	public abstract void accept(Visitor v);
-	//GameObjectGrafico miGrafico; 
-	// sprites de cada object en particas. mover()
+	
+	/**
+	 * Mata al objeto.
+	 * @return Monedas soltadas por el objeto.
+	 */
+	public abstract int kill();
 }

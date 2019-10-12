@@ -3,6 +3,7 @@ package Personajes;
 public abstract class Torre extends Personaje
 {
 	protected int precio;
+	protected int espacioEnArreglo;
 	
 	
 	/**

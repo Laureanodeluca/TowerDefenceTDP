@@ -5,14 +5,16 @@ import Personajes.*;
 
 public class Juego 
 {
-	private GameObject torre;
+	private GameObject [] torre;
 	private Fantasma p;
+	private int cantTorres;
 	
 	public Juego(GUI gui)
 	{
+		cantTorres = 0;
 		this.p = new Fantasma(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
-		torre = null;
+		torre = new GameObject[100];
 	}
 	
 	/**
@@ -48,6 +50,12 @@ public class Juego
 		return money;
 	}
 	
+	public void killTower(int i)
+	{
+		torre[i].kill();
+		torre[i] = null;
+	}
+	
 	/**
 	 * Inserta un personaje p en el espacio i del arreglo.
 	 * @param i Espacio del arreglo.
@@ -55,11 +63,26 @@ public class Juego
 	 */
 	public void insertarTorre(GameObject p)
 	{
-		torre = p;
+		torre[cantTorres] = p;
+		cantTorres++;
 	}
 	
-	public GameObject getTorre()
+	/**
+	 * Retorna la torre en el bucket i del arreglo.
+	 * @param i Bucket que contiene la torre que se desea retornar
+	 * @return Torre en el bucket i del arreglo.
+	 */
+	public GameObject getTorre(int i)
 	{
-		return torre;
+		return torre[i];
+	}
+	
+	/**
+	 * Consulta la cantidad de torres en el mapa.
+	 * @return cantidad de torres en el mapa.
+	 */
+	public int getCantTorres()
+	{
+		return cantTorres;
 	}
 }

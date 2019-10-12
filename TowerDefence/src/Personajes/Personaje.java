@@ -84,4 +84,6 @@ public abstract class Personaje extends GameObject {
 	 * @param p Personaje a atacar.
 	 */
 	public abstract void atacar(Personaje p);
+	
+	
 }

@@ -6,6 +6,7 @@ import Visitor.*;
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
+	private boolean colision;
 
 	ContadorTiempo(Juego j) {
 		this.elJuego = j;
@@ -18,9 +19,21 @@ public class ContadorTiempo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//System.out.println("X = "+elJuego.getEnemy().getX());
-			if ((elJuego.getTorre() != null) && (elJuego.getEnemy().getX() == elJuego.getTorre().getX()))
-				elJuego.getEnemy().accept(new VisitorEnemigo());
+			colision = false;
+			for (int i = 0; i < elJuego.getCantTorres(); i++)
+			{
+				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() == elJuego.getTorre(i).getX()))
+				{
+					colision = true;
+					elJuego.getEnemy().accept(new VisitorColisiones());
+					System.out.println("Encontrado!");
+				}
+			}
+			if (!colision)
+			{
+				elJuego.getEnemy().accept(new VisitorContinuarMovimiento());
+				System.out.println("Torre eliminada!");
+			}
 			elJuego.moverPersonaje();
 			
 		}

@@ -11,8 +11,8 @@ public Personaje Fantasma(int x, int y) {
 }
 
 @Override
-public Personaje PlantaEscupeFuego(int x, int y) {
+public Personaje PlantaEscupeFuego(int x, int y, int e) {
 	// TODO Auto-generated method stub
-	return new PlantaEscupeFuego(x,y);
+	return new PlantaEscupeFuego(x,y,e);
 }
 }

@@ -14,6 +14,5 @@ public abstract class Visitor
 	 * Visita a un enemigo.
 	 * @param e Enemigo a visitar.
 	 */
-	public abstract void visitarEnemigo(Enemigo e);
-	
+	public abstract void visitarEnemigo(Enemigo e);	
 }
