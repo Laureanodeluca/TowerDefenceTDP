@@ -1,10 +1,13 @@
 package Objetos;
 import javax.swing.*;
+import Visitor.Visitor;
 
 public abstract class GameObject
 {
 	protected Icon sprite;
 	protected int x, y;
+	protected Visitor miVisitor;
+
 	
 	/**
 	 * Retorna el sprite del personaje.
@@ -53,6 +56,12 @@ public abstract class GameObject
 	public void setY(int j){
 		y = j;
 	}
+	
+	/**
+	 * Acepta a un visitor v
+	 * @param v Visitor.
+	 */
+	public abstract void accept(Visitor v);
 	//GameObjectGrafico miGrafico; 
 	// sprites de cada object en particas. mover()
 }

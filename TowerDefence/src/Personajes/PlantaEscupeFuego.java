@@ -1,6 +1,8 @@
 package Personajes;
 import javax.swing.*;
 
+import Visitor.Visitor;
+
 public class PlantaEscupeFuego extends Torre
 {
 	public PlantaEscupeFuego(int x, int y)
@@ -13,6 +15,17 @@ public class PlantaEscupeFuego extends Torre
 		velocidadDeAtaque = 50;
 		this.x = x;
 		this.y = y;
+	}
+
+	@Override
+	public void accept(Visitor v)
+	{		
+	}
+
+	@Override
+	public void atacar(Personaje p) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

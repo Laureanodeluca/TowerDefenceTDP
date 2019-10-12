@@ -3,11 +3,14 @@ package Personajes;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+
 public abstract class Enemigo extends Personaje
 {
 	protected JLabel label = new JLabel();
 	protected int velocidadDeMovimiento;
 	protected int monedas;
+	protected boolean enMovimiento = true;
 	
 	/**
 	 * Retorna la cantidad de monedas que suelta cada enemigo.
@@ -68,7 +71,11 @@ public abstract class Enemigo extends Personaje
 	 * Mueve j espacios al objeto sobre el eje x.
 	 * @param j cantidad de espacios movidos.
 	 */
-	public abstract void mover(int x);
+	public void mover(int i)
+	{
+		this.x = this.x-i/velocidadDeMovimiento;
+		cambiarLabel(this.sprite);
+	}
 	
 	/**
 	 * Mata al enemigo.
@@ -87,5 +94,32 @@ public abstract class Enemigo extends Personaje
 	protected void cambiarLabel(Icon i){
 		this.label.setIcon(i);
 		this.label.setLocation(x, y);
+	}
+	
+	/**
+	 * Acepta al visitor v.
+	 * @param v Visitor. 
+	 */
+	public void accept(Visitor v)
+	{
+		v.visitarEnemigo(this);
+	}
+	
+	/**
+	 * Si el enemigo esta en movimiento, retorna true. Si no lo esta, retorna false.
+	 * @return true si el enemigo esta en movimiento, false si no lo esta.
+	 */
+	public boolean getMovimiento()
+	{
+		return enMovimiento;
+	}
+	
+	/**
+	 * Cambia el movimiento del enemigo.
+	 * @param b True: el enemigo esta en movimiento. False: no lo esta.
+	 */
+	public void setMovimiento(boolean b)
+	{
+		enMovimiento = b;
 	}
 }

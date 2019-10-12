@@ -3,6 +3,8 @@ package Personajes;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+
 public class Fantasma extends Enemigo
 {
 	
@@ -20,11 +22,15 @@ public class Fantasma extends Enemigo
 		this.label = new JLabel(sprite);
 	}	
 	
-	@Override
-	public void mover(int i)
+
+	public void accept(Visitor v)
 	{
-		this.x = this.x-i;
-		cambiarLabel(this.sprite);
+		v.visitarEnemigo(this);
 	}
-	
+
+	@Override
+	public void atacar(Personaje p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

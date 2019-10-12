@@ -1,6 +1,7 @@
 package GUI;
 
 import Main.Juego;
+import Visitor.*;
 
 public class ContadorTiempo extends Thread {
 
@@ -17,7 +18,11 @@ public class ContadorTiempo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.moverPersonaje ();
+			//System.out.println("X = "+elJuego.getEnemy().getX());
+			if ((elJuego.getTorre() != null) && (elJuego.getEnemy().getX() == elJuego.getTorre().getX()))
+				elJuego.getEnemy().accept(new VisitorEnemigo());
+			elJuego.moverPersonaje();
+			
 		}
 	}
 }

@@ -1,15 +1,18 @@
 package Main;
 import GUI.GUI;
+import Objetos.GameObject;
 import Personajes.*;
 
 public class Juego 
 {
+	private GameObject torre;
 	private Fantasma p;
 	
 	public Juego(GUI gui)
 	{
 		this.p = new Fantasma(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
+		torre = null;
 	}
 	
 	/**
@@ -17,7 +20,12 @@ public class Juego
 	 */
 	public void moverPersonaje()
 	{
-		p.mover(1);
+		p.mover(p.getVelocidadDeMovimiento());
+	}
+	
+	public void detener()
+	{
+		p.mover(-150);
 	}
 	
 	/**
@@ -26,7 +34,6 @@ public class Juego
 	 */
 	public Enemigo getEnemy()
 	{
-		System.out.println("Retornado P!");
 		return p;
 	}
 	
@@ -39,5 +46,20 @@ public class Juego
 		int money = p.kill();
 		p = null;
 		return money;
+	}
+	
+	/**
+	 * Inserta un personaje p en el espacio i del arreglo.
+	 * @param i Espacio del arreglo.
+	 * @param p Torre a insertar.
+	 */
+	public void insertarTorre(GameObject p)
+	{
+		torre = p;
+	}
+	
+	public GameObject getTorre()
+	{
+		return torre;
 	}
 }

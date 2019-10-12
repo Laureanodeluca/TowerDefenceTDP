@@ -6,8 +6,8 @@ import javax.swing.border.LineBorder;
 
 import Main.Juego;
 import Objetos.GameObject;
-//import Personajes.PlantaEscupeFuego;
 import Personajes.*;
+import Visitor.*;
 
 import java.awt.Color;
 import java.awt.*;
@@ -167,13 +167,6 @@ public class GUI extends JFrame{
 		return posY-largoCelda/3;
 	}
 	
-	protected void mover()
-	{
-		j.moverPersonaje();
-		this.repaint();
-	}
-	
-	
 	class insertarTorre extends MouseAdapter
 	{				
 		public void mouseClicked(MouseEvent e)
@@ -182,6 +175,8 @@ public class GUI extends JFrame{
 			{
 				f= new FabricaPersonaje();
 				GameObject plant = f.PlantaEscupeFuego(e.getX(),e.getY());
+				j.insertarTorre(plant);
+				//System.out.println("Insertado!");
 				JLabel lab = new JLabel(plant.getSprite());
 				Tablero.add(lab);
 				lab.setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);

@@ -6,7 +6,7 @@ public abstract class Personaje extends GameObject {
 	protected int vida;
 	protected int rango;
 	protected int velocidadDeAtaque;
-
+	
 	
 	/**
 	 * Consulta la fuerza de ataque de la torre.
@@ -75,10 +75,13 @@ public abstract class Personaje extends GameObject {
 	 * Establece la velocidad de ataque de la torre.
 	 * @param v Velocidad de ataque de la torre.
 	 */
-	public void setVelocidadDeAtaque(int v)
-	{
+	public void setVelocidadDeAtaque(int v){
 		velocidadDeAtaque = v;
 	}
 	
-	
+	/**
+	 * Ataca a un personaje p.
+	 * @param p Personaje a atacar.
+	 */
+	public abstract void atacar(Personaje p);
 }
