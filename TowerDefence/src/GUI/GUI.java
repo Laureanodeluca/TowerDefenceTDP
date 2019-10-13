@@ -176,10 +176,14 @@ public class GUI extends JFrame{
 			{
 				f= new FabricaPersonaje();
 				GameObject plant = f.PlantaEscupeFuego(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
+				//JLabel lab = new JLabel(plant.getSprite());
+				//Tablero.add(lab);
+				//lab.setBounds(plant.getX(),plant.getY(),75,85);
+				plant.getLabel().setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
+				Tablero.add(plant.getLabel());
 				j.insertarTorre(plant);
-				JLabel lab = new JLabel(plant.getSprite());
-				Tablero.add(lab);
-				lab.setBounds(plant.getX(),plant.getY(),75,85);
+				Tablero.repaint();
+				System.out.println("Torre Insertada!");
 			}
 			
 		}
@@ -207,9 +211,9 @@ public class GUI extends JFrame{
 			if(e.getButton() == MouseEvent.BUTTON3)
 			{
 				j.getTorre(0).cambiarLabel(null);
-				j.getTorre(0).setLabel(null);
-				Tablero.repaint();
 				j.killTower(j.getCantTorres()-1);
+				Tablero.repaint();
+
 			}
 		}
 	}

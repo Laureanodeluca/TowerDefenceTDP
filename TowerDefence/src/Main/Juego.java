@@ -53,7 +53,13 @@ public class Juego
 	public void killTower(int i)
 	{
 		torre[i].kill();
+		cantTorres--;
 		torre[i] = null;
+		for (int j = i; j < torre.length-1; j++)
+		{
+			torre[j] = torre[j+1];
+			torre[j+1] = null;
+		}
 	}
 	
 	/**
