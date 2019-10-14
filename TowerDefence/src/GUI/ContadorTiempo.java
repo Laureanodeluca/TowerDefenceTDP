@@ -22,15 +22,17 @@ public class ContadorTiempo extends Thread {
 			colision = false;
 			for (int i = 0; i < elJuego.getCantTorres(); i++)
 			{
-				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() == elJuego.getTorre(i).getX()) && (elJuego.getEnemy().getY() == elJuego.getTorre(i).getY()))
+				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() == elJuego.getTorre(i).getX()))
 				{
 					colision = true;
 					elJuego.getEnemy().accept(new VisitorColisiones());
+					System.out.println("Encontrado!");
 				}
 			}
 			if (!colision)
 			{
 				elJuego.getEnemy().accept(new VisitorContinuarMovimiento());
+				System.out.println("Torre eliminada!");
 			}
 			elJuego.moverPersonaje();
 			

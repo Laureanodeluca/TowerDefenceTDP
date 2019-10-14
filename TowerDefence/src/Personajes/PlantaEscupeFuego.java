@@ -16,7 +16,6 @@ public class PlantaEscupeFuego extends Torre
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
-		label.setIcon(sprite);
 	}
 
 	@Override
