@@ -6,7 +6,7 @@ public abstract class Personaje extends GameObject {
 	protected int vida;
 	protected int rango;
 	protected int velocidadDeAtaque;
-	
+	protected boolean puedeAtacar;
 	
 	/**
 	 * Consulta la fuerza de ataque de la torre.
@@ -84,6 +84,20 @@ public abstract class Personaje extends GameObject {
 	 * @param p Personaje a atacar.
 	 */
 	public abstract void atacar(Personaje p);
+
+	public void setPuedeAtacar(boolean puede) {
+		puedeAtacar=puede;
+	}
+
+	/**
+	 * Retorna el atributo puedeAtacar
+	 *
+	 * @return boolean puedeAtacar
+	 */
+
+	public boolean puedeAtacar() {
+		return puedeAtacar;
+	}
 	
 	
 }
