@@ -83,7 +83,7 @@ public abstract class Personaje extends GameObject {
 	 * Ataca a un personaje p.
 	 * @param p Personaje a atacar.
 	 */
-	public abstract void atacar(Personaje p);
+	public abstract Disparo atacar();
 
 	public void setPuedeAtacar(boolean puede) {
 		puedeAtacar=puede;

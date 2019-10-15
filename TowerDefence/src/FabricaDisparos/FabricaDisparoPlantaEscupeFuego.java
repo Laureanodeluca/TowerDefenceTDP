@@ -1,5 +1,7 @@
 package FabricaDisparos;
 
+import javax.swing.JLabel;
+
 import Personajes.Disparo;
 import Personajes.DisparoPlantaEscupeFuego;
 import Personajes.Personaje;
@@ -12,13 +14,12 @@ public class FabricaDisparoPlantaEscupeFuego extends FabricaDisparo{
 	}
 
 	@Override
-	public void generarDisparo() {
+	public Disparo generarDisparo() {
 		// TODO Auto-generated method stub
 
         Disparo nuevoDisparo=new DisparoPlantaEscupeFuego(disparador.getX(),disparador.getY(),disparador.getAtaque(),disparador.getVelocidadDeAtaque());
-
-        hiloPuedeAtacar=new HiloPrueba(disparador);
-        hiloPuedeAtacar.start();
+        nuevoDisparo.setLabel(new JLabel(nuevoDisparo.getSprite()));
+       return nuevoDisparo;
 	}
 
 }

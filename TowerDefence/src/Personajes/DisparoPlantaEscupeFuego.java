@@ -13,12 +13,6 @@ public class DisparoPlantaEscupeFuego extends Disparo {
 	}
 
 	@Override
-	public void atacar(Personaje p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void accept(Visitor v) {
 		// TODO Auto-generated method stub
 		
@@ -29,5 +23,4 @@ public class DisparoPlantaEscupeFuego extends Disparo {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }

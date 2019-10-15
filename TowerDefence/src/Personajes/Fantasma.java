@@ -30,8 +30,8 @@ public class Fantasma extends Enemigo
 	}
 
 	@Override
-	public void atacar(Personaje p) {
+	public Disparo atacar() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 }

@@ -5,12 +5,10 @@ import Mapa.Mapa;
 import java.awt.Point;
 public abstract class FabricaDisparo {
 
-	protected HiloPrueba hiloPuedeAtacar;
 	protected Personaje disparador;
 	
 	public FabricaDisparo(Personaje disparador) {
 		this.disparador=disparador;
-		hiloPuedeAtacar=new HiloPrueba(disparador);
 	}
 
 
@@ -23,7 +21,7 @@ public abstract class FabricaDisparo {
 	 *
 	 */
 
-	public abstract void generarDisparo();
+	public abstract Disparo generarDisparo();
 
 
 

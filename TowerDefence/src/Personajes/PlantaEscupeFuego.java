@@ -1,6 +1,7 @@
 package Personajes;
 import javax.swing.*;
 
+import FabricaDisparos.FabricaDisparoPlantaEscupeFuego;
 import Visitor.Visitor;
 
 public class PlantaEscupeFuego extends Torre
@@ -16,6 +17,8 @@ public class PlantaEscupeFuego extends Torre
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
+		label.setIcon(sprite);
+		factory = new FabricaDisparoPlantaEscupeFuego(this);
 	}
 
 	@Override
@@ -24,9 +27,9 @@ public class PlantaEscupeFuego extends Torre
 	}
 
 	@Override
-	public void atacar(Personaje p) {
-		// TODO Auto-generated method stub
-		
+	public Disparo atacar()
+	{
+		return factory.generarDisparo();
 	}
 
 	@Override
