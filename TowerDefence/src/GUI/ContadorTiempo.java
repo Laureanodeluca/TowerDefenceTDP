@@ -20,6 +20,11 @@ public class ContadorTiempo extends Thread {
 				e.printStackTrace();
 			}
 			colision = false;
+			for (int j = 0; (j < elJuego.getCantDisparos() && (elJuego.getDisparo(j) != null)); j++)
+			{
+				elJuego.moverDisparo(j, 5);
+			}
+			
 			for (int i = 0; i < elJuego.getCantTorres(); i++)
 			{
 				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() == elJuego.getTorre(i).getX()) && (elJuego.getEnemy().getY() == elJuego.getTorre(i).getY()))
@@ -29,6 +34,7 @@ public class ContadorTiempo extends Thread {
 					//System.out.println("Encontrado!");
 				}
 			}
+			
 			if (!colision)
 			{
 				elJuego.getEnemy().accept(new VisitorContinuarMovimiento());

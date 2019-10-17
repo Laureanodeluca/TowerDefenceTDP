@@ -41,10 +41,6 @@ public abstract class Enemigo extends Personaje
 		monedas = m;
 	}
 	
-	/**
-	 * Mueve j espacios al objeto sobre el eje x.
-	 * @param j cantidad de espacios movidos.
-	 */
 	public void mover(int i)
 	{
 		if (i != 0)

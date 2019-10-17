@@ -28,7 +28,7 @@ public class GUI extends JFrame{
 	private static final int CANT_Y = 6;
 	private Juego j;
 	private ContadorTiempo tiempo;
-	private ThreadDisparos tiempoDisparo;
+	private ThreadDisparos threadDisparo;
 	private JLabel displayMonedas;
 	private FactoryPersonajes f;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
@@ -48,8 +48,15 @@ public class GUI extends JFrame{
 		
 		j = new Juego(this);
 		tiempo = new ContadorTiempo(j);
+		threadDisparo = new ThreadDisparos(j, this);
 		insertarEnemigo();
 		tiempo.start();
+		threadDisparo.start();
+	}
+	
+	public JPanel getTablero()
+	{
+		return Tablero;
 	}
 	
 	public void insertarEnemigo()
@@ -57,7 +64,6 @@ public class GUI extends JFrame{
 		Fantasma en = (Fantasma) j.getEnemy();
 		en.getLabel().setBounds(acomodarX(en.getX(),CANT_X),acomodarY(en.getY(),CANT_Y),75,85);
 		Tablero.add(en.getLabel());
-		System.out.println("Enemigo Insertado!");
 	}
 	
 	
@@ -176,9 +182,9 @@ public class GUI extends JFrame{
 			if (e.getButton() == MouseEvent.BUTTON1)
 			{
 				f= new FabricaPersonaje();
-				GameObject plant = f.PlantaEscupeFuego(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
+				Personaje plant = f.PlantaEscupeFuego(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
 				j.insertarTorre(plant);
-				plant.getLabel().setBounds(acomodarX(plant.getX(),CANT_X),acomodarY(plant.getY(),CANT_Y),75,85);
+				plant.getLabel().setBounds(plant.getX(),plant.getY(),75,85);
 				Tablero.add(plant.getLabel());
 				Tablero.repaint();
 			}
@@ -211,7 +217,6 @@ public class GUI extends JFrame{
 				//j.getTorre(j.getCantTorres()-1).setLabel(null);
 				j.killTower(j.getCantTorres()-1);
 				Tablero.repaint();
-
 			}
 		}
 	}

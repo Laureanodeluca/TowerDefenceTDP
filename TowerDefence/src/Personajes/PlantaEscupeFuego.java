@@ -13,7 +13,7 @@ public class PlantaEscupeFuego extends Torre
 		vida = 100;
 		precio = 500;
 		rango = 5;
-		velocidadDeAtaque = 50;
+		velocidadDeAtaque = 20;
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
@@ -39,5 +39,11 @@ public class PlantaEscupeFuego extends Torre
 		y = 0;
 		cambiarLabel(null);
 		return 0;
+	}
+
+	@Override
+	public void mover(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -6,17 +6,21 @@ import Personajes.*;
 public class Juego 
 {
 	private Torre [] torre;
-	private Disparo [] Disparo;
+	private Disparo [] disparo;
 	private Fantasma p;
 	private int cantTorres;
+	private int cantDisparos;
 	
 	public Juego(GUI gui)
 	{
 		cantTorres = 0;
+		cantDisparos = 0;
 		this.p = new Fantasma(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
 		torre = new Torre[100];
+		disparo = new Disparo[10000];
 	}
+	
 	
 	/**
 	 * Mueve un personaje.
@@ -24,6 +28,11 @@ public class Juego
 	public void moverPersonaje()
 	{
 		p.mover(p.getVelocidadDeMovimiento());
+	}
+	
+	public void moverDisparo(int i, int vel)
+	{
+		disparo[i].mover(-vel);
 	}
 	
 	public void detener()
@@ -94,8 +103,34 @@ public class Juego
 		return cantTorres;
 	}
 	
+	/**
+	 * Consulta el disparo en la posicion i del arreglo.
+	 * @param i Posicion en el arreglo que contiene el disparo.
+	 * @return Disparo en la posicion i.
+	 */
 	public Disparo getDisparo(int i)
 	{
-		return Disparo[i];
+		return disparo[i];
 	}
+	
+	/**
+	 * Ingresa un disparo en la posicion i del arreglo.
+	 * @param i Posicion i del nuevo disparo en el arreglo.
+	 * @param d Disparo a insertar.
+	 */
+	public void insertarDisparo(Disparo d, int i)
+	{
+		disparo[i] = d;
+		cantDisparos++;
+	}
+	
+	/**
+	 * Retorna la cantidad de disparos activos en el mapa.
+	 * @return cantidad de disparos en el mapa.
+	 */
+	public int getCantDisparos()
+	{
+		return cantDisparos;
+	}
+	
 }

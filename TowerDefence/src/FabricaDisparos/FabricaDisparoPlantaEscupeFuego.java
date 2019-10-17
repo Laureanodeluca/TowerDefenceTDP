@@ -18,8 +18,7 @@ public class FabricaDisparoPlantaEscupeFuego extends FabricaDisparo{
 		// TODO Auto-generated method stub
 
         Disparo nuevoDisparo=new DisparoPlantaEscupeFuego(disparador.getX(),disparador.getY(),disparador.getAtaque(),disparador.getVelocidadDeAtaque());
-        nuevoDisparo.setLabel(new JLabel(nuevoDisparo.getSprite()));
-       return nuevoDisparo;
+        return nuevoDisparo;
 	}
 
 }

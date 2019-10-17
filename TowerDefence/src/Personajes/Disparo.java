@@ -1,8 +1,5 @@
 package Personajes;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Objetos.GameObject;
 
 public abstract class Disparo  extends GameObject{
@@ -13,11 +10,14 @@ public abstract class Disparo  extends GameObject{
 	   this.x=x;
 	   this.y=y;
 	   this.ataque=ataque;
-	   this.velocidadDeAtaque=velocidaddeAtaque;
-	   this.label = new JLabel();
-	   
+	   this.velocidadDeAtaque=velocidaddeAtaque;	   
    }
   public void afectarPersonaje(Enemigo afectarPersonaje) {
 	  afectarPersonaje.kill();
+  }
+  
+  public int getVelocidad()
+  {
+	  return velocidadDeAtaque;
   }
 }

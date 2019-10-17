@@ -9,6 +9,11 @@ public abstract class GameObject
 	protected Visitor miVisitor;
 	protected JLabel label = new JLabel();
 
+	/**
+	 * Mueve j espacios al objeto sobre el eje x.
+	 * @param j cantidad de espacios movidos.
+	 */
+	public abstract void mover(int i);
 
 	/**
 	 * Retorna el JLabel con el sprite del objeto.
@@ -39,7 +44,7 @@ public abstract class GameObject
 	 */
 	public void cambiarLabel(Icon i){
 		this.label.setIcon(i);
-		this.label.setLocation(x+20, y+18);
+		this.label.setLocation(this.x, y);
 	}
 	
 	/**
