@@ -1,7 +1,5 @@
 package FabricaDisparos;
 
-import javax.swing.JLabel;
-
 import Personajes.Disparo;
 import Personajes.DisparoPlantaEscupeFuego;
 import Personajes.Personaje;

@@ -1,8 +1,10 @@
-package Personajes;
+package Enemigos;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Personajes.Disparo;
+import Personajes.Enemigo;
 import Visitor.Visitor;
 
 public class Fantasma extends Enemigo
@@ -17,10 +19,10 @@ public class Fantasma extends Enemigo
 		this.vida = 55;
 		this.monedas = 100;
 		this.velocidadDeAtaque = 50;
-		this.velocidadDeMovimiento = 25;
+		this.velocidadDeMovimiento = 1;
 		this.rango = 0;
 		this.label = new JLabel(sprite);
-		this.movimientoOriginal = 25;
+		this.movimientoOriginal = 1;
 	}	
 	
 
@@ -31,7 +33,6 @@ public class Fantasma extends Enemigo
 
 	@Override
 	public Disparo atacar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

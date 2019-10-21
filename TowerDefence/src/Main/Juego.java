@@ -1,4 +1,5 @@
 package Main;
+import Enemigos.*;
 import GUI.GUI;
 import Objetos.GameObject;
 import Personajes.*;
@@ -7,7 +8,7 @@ public class Juego
 {
 	private Torre [] torre;
 	private Disparo [] disparo;
-	private Fantasma p;
+	private Enemigo p;
 	private int cantTorres;
 	private int cantDisparos;
 	
@@ -15,7 +16,7 @@ public class Juego
 	{
 		cantTorres = 0;
 		cantDisparos = 0;
-		this.p = new Fantasma(gui.acomodarX(1200,10), gui.acomodarY(250,6));
+		this.p = new Goomba(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
 		torre = new Torre[100];
 		disparo = new Disparo[10000];

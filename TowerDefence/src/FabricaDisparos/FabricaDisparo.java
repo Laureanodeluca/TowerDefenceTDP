@@ -1,8 +1,6 @@
 package FabricaDisparos;
 
 import Personajes.*;
-import Mapa.Mapa;
-import java.awt.Point;
 public abstract class FabricaDisparo {
 
 	protected Personaje disparador;

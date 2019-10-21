@@ -44,7 +44,7 @@ public abstract class Enemigo extends Personaje
 	public void mover(int i)
 	{
 		if (i != 0)
-			this.x = this.x-i/velocidadDeMovimiento;
+			this.x = this.x-i;
 		cambiarLabel(this.sprite);
 	}
 	

@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import Enemigos.*;
 import Main.Juego;
-import Objetos.GameObject;
 import Personajes.*;
 //import Visitor.*;
 
@@ -61,7 +61,7 @@ public class GUI extends JFrame{
 	
 	public void insertarEnemigo()
 	{
-		Fantasma en = (Fantasma) j.getEnemy();
+		Goomba en = (Goomba) j.getEnemy();
 		en.getLabel().setBounds(acomodarX(en.getX(),CANT_X),acomodarY(en.getY(),CANT_Y),75,85);
 		Tablero.add(en.getLabel());
 	}
