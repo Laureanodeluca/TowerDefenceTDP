@@ -11,5 +11,7 @@ public interface FactoryPersonajes {
 	public Personaje Badnik(int x, int y);
 
 	//Torres
-	public Personaje PlantaEscupeFuego(int x , int y, int i);
+	public Personaje PlantaEscupeFuego(int x , int y, int e);
+	public Personaje BulletBill(int x, int y, int e);
+	public Personaje MegaMan(int x, int y, int e);
 }

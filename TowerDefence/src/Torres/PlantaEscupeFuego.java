@@ -1,7 +1,9 @@
-package Personajes;
+package Torres;
 import javax.swing.*;
 
+import FabricaDisparos.Disparo;
 import FabricaDisparos.FabricaDisparoPlantaEscupeFuego;
+import Personajes.Torre;
 import Visitor.Visitor;
 
 public class PlantaEscupeFuego extends Torre

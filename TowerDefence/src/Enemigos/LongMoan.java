@@ -3,7 +3,7 @@ package Enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Personajes.Disparo;
+import FabricaDisparos.Disparo;
 import Personajes.Enemigo;
 
 public class LongMoan extends Enemigo

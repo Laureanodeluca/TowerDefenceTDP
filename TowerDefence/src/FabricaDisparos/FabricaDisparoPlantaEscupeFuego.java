@@ -1,7 +1,5 @@
 package FabricaDisparos;
 
-import Personajes.Disparo;
-import Personajes.DisparoPlantaEscupeFuego;
 import Personajes.Personaje;
 
 public class FabricaDisparoPlantaEscupeFuego extends FabricaDisparo{

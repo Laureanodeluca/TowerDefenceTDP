@@ -1,5 +1,6 @@
 package Main;
 import Enemigos.*;
+import FabricaDisparos.Disparo;
 import GUI.GUI;
 import Objetos.GameObject;
 import Personajes.*;

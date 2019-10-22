@@ -1,11 +1,7 @@
 package Personajes;
 
-import Enemigos.Badnik;
-import Enemigos.DarkMan;
-import Enemigos.Fantasma;
-import Enemigos.Goomba;
-import Enemigos.LongMoan;
-import Enemigos.Stalfos;
+import Enemigos.*;
+import Torres.*;
 
 public class FabricaPersonaje implements FactoryPersonajes {
 
@@ -49,4 +45,14 @@ public class FabricaPersonaje implements FactoryPersonajes {
 		// TODO Auto-generated method stub
 		return new Badnik(x,y);
 	}
+	
+	public Personaje BulletBill(int x, int y, int e){
+		return new BulletBill(x,y,e);
+	}
+	
+	public Personaje MegaMan(int x, int y, int e) {
+		return new MegaMan(x,y,e);
+	}
+	
+	
 }

@@ -1,4 +1,4 @@
-package Personajes;
+package FabricaDisparos;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

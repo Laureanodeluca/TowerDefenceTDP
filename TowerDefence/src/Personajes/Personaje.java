@@ -1,4 +1,5 @@
 package Personajes;
+import FabricaDisparos.Disparo;
 import Objetos.*;
 public abstract class Personaje extends GameObject {
 	

@@ -1,6 +1,8 @@
-package Personajes;
+package FabricaDisparos;
 
 import Objetos.GameObject;
+import Personajes.Enemigo;
+import Personajes.Personaje;
 
 public abstract class Disparo  extends GameObject{
    protected Personaje disparo;

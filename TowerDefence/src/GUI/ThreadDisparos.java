@@ -1,7 +1,7 @@
 package GUI;
 
+import FabricaDisparos.Disparo;
 import Main.Juego;
-import Personajes.Disparo;
 
 public class ThreadDisparos extends Thread {
 
