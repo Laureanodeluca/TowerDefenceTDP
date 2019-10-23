@@ -1,4 +1,4 @@
-package FabricaDisparos;
+package Disparos;
 
 import Objetos.GameObject;
 import Personajes.Enemigo;
@@ -7,8 +7,8 @@ import Personajes.Personaje;
 public abstract class Disparo  extends GameObject{
    protected Personaje disparo;
    int ataque;
-   int velocidadDeAtaque;
-   public Disparo(int x , int y , int ataque , int velocidaddeAtaque) {
+   double velocidadDeAtaque;
+   public Disparo(int x , int y , int ataque , double velocidaddeAtaque) {
 	   this.x=x;
 	   this.y=y;
 	   this.ataque=ataque;
@@ -18,7 +18,7 @@ public abstract class Disparo  extends GameObject{
 	  afectarPersonaje.kill();
   }
   
-  public int getVelocidad()
+  public double getVelocidad()
   {
 	  return velocidadDeAtaque;
   }

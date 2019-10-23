@@ -1,5 +1,7 @@
 package FabricaDisparos;
 
+import Disparos.Disparo;
+import Disparos.DisparoBulletBill;
 import Personajes.Personaje;
 
 public class FabricaDisparoBulletBill extends FabricaDisparo

@@ -1,4 +1,4 @@
-package FabricaDisparos;
+package Disparos;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -7,7 +7,7 @@ import Visitor.Visitor;
 
 public class DisparoPlantaEscupeFuego extends Disparo {
 
-	public DisparoPlantaEscupeFuego(int x, int y, int ataque, int velocidaddeAtaque) {
+	public DisparoPlantaEscupeFuego(int x, int y, int ataque, double velocidaddeAtaque) {
 		super(x+40, y+25, ataque, velocidaddeAtaque);
 		sprite=new ImageIcon("src/main/resources/PlantaEscupefuego/bolafuego.png");
 		label = new JLabel(sprite);

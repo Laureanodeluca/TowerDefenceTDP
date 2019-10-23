@@ -1,5 +1,7 @@
 package FabricaDisparos;
 
+import Disparos.Disparo;
+import Disparos.DisparoMegaMan;
 import Personajes.Personaje;
 
 public class FabricaDisparoMegaMan extends FabricaDisparo

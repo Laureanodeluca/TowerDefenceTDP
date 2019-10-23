@@ -54,5 +54,9 @@ public class FabricaPersonaje implements FactoryPersonajes {
 		return new MegaMan(x,y,e);
 	}
 	
+	public Personaje DonkeyKong(int x, int y, int e) {
+		return new DonkeyKong(x,y,e);
+	}
+	
 	
 }

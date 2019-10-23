@@ -3,7 +3,7 @@ package Enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import FabricaDisparos.Disparo;
+import Disparos.Disparo;
 import Personajes.Enemigo;
 
 public class DarkMan extends Enemigo

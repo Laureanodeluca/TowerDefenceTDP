@@ -14,4 +14,5 @@ public interface FactoryPersonajes {
 	public Personaje PlantaEscupeFuego(int x , int y, int e);
 	public Personaje BulletBill(int x, int y, int e);
 	public Personaje MegaMan(int x, int y, int e);
+	public Personaje DonkeyKong(int x, int y, int e);
 }

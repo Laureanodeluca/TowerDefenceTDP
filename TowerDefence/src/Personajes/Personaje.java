@@ -1,12 +1,12 @@
 package Personajes;
-import FabricaDisparos.Disparo;
+import Disparos.Disparo;
 import Objetos.*;
 public abstract class Personaje extends GameObject {
 	
 	protected int ataque;
 	protected int vida;
 	protected int rango;
-	protected int velocidadDeAtaque;
+	protected double velocidadDeAtaque;
 	protected boolean puedeAtacar;
 	
 	/**
@@ -40,7 +40,7 @@ public abstract class Personaje extends GameObject {
 	 * Consulta la velocidad de ataque de la torre.
 	 * @return velocidad de ataque de la torre.
 	 */
-	public int getVelocidadDeAtaque()
+	public double getVelocidadDeAtaque()
 	{
 		return velocidadDeAtaque;
 	}

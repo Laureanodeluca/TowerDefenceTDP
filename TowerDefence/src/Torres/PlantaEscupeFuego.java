@@ -1,26 +1,29 @@
 package Torres;
 import javax.swing.*;
 
-import FabricaDisparos.Disparo;
+import Disparos.Disparo;
 import FabricaDisparos.FabricaDisparoPlantaEscupeFuego;
 import Personajes.Torre;
 import Visitor.Visitor;
 
 public class PlantaEscupeFuego extends Torre
 {
+	
+	private static final float c = 650;	
 	public PlantaEscupeFuego(int x, int y, int e)
 	{
-		sprite = new ImageIcon("src/main/resources/PlantaEscupefuego/idle1.png");
+		sprite = new ImageIcon("src/main/resources/PlantaEscupefuego/idle1.gif");
 		ataque = 50;
 		vida = 100;
 		precio = 500;
 		rango = 5;
-		velocidadDeAtaque = 20;
+		velocidadDeAtaque = 1.6;
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
 		label.setIcon(sprite);
 		factory = new FabricaDisparoPlantaEscupeFuego(this);
+		contador = c;
 	}
 
 	@Override
@@ -31,7 +34,15 @@ public class PlantaEscupeFuego extends Torre
 	@Override
 	public Disparo atacar()
 	{
-		return factory.generarDisparo();
+		if (contador > 0)
+			contador = contador-velocidadDeAtaque;
+		else
+		{
+			contador = c;
+			return factory.generarDisparo();
+		}
+		
+		return null;	
 	}
 
 	@Override

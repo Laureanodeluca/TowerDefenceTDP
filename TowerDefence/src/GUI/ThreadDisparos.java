@@ -1,6 +1,6 @@
 package GUI;
 
-import FabricaDisparos.Disparo;
+import Disparos.Disparo;
 import Main.Juego;
 
 public class ThreadDisparos extends Thread {
@@ -17,7 +17,7 @@ public class ThreadDisparos extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(256);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -26,11 +26,14 @@ public class ThreadDisparos extends Thread {
 			{
 				
 				Disparo d = juego.getTorre(i).atacar();
-				juego.insertarDisparo(d, juego.getCantDisparos());
-				
-				d.getLabel().setBounds(d.getX(), d.getY(), 9, 9);
-				miGui.getTablero().add(d.getLabel());
-				miGui.repaint();
+				if (d != null)
+				{
+					juego.insertarDisparo(d, juego.getCantDisparos());
+					
+					d.getLabel().setBounds(d.getX(), d.getY(), 21, 21);
+					miGui.getTablero().add(d.getLabel());
+					miGui.repaint();
+				}
 			}			
 		}
 	}

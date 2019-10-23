@@ -1,12 +1,14 @@
 package Torres;
 import javax.swing.ImageIcon;
 
+import Disparos.Disparo;
 import FabricaDisparos.*;
 import Personajes.*;
 import Visitor.Visitor;
 
 public class BulletBill extends Torre 
 {
+	public static final double c = 840;
 	public BulletBill(int x, int y, int e)
 	{
 		sprite = new ImageIcon("src/main/resources/Bullet Bill/idle1.gif");
@@ -14,17 +16,26 @@ public class BulletBill extends Torre
 		vida = 250;
 		precio = 500;
 		rango = 5;
-		velocidadDeAtaque = 5;
+		velocidadDeAtaque = 1.6;
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
 		label.setIcon(sprite);
 		factory = new FabricaDisparoBulletBill(this);
+		contador = c;
 	}
 
 	@Override
 	public Disparo atacar() {
-		return factory.generarDisparo();
+		if (contador > 0)
+			contador = contador-velocidadDeAtaque;
+		else
+		{
+			contador = c;
+			return factory.generarDisparo();
+		}
+		
+		return null;	
 	}
 
 	@Override

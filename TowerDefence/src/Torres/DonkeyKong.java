@@ -3,26 +3,26 @@ package Torres;
 import javax.swing.ImageIcon;
 
 import Disparos.Disparo;
-import FabricaDisparos.FabricaDisparoMegaMan;
+import FabricaDisparos.FabricaDisparoDonkeyKong;
 import Personajes.Torre;
 import Visitor.Visitor;
 
-public class MegaMan extends Torre
+public class DonkeyKong extends Torre
 {
-	public static final double c = 500;
-	public MegaMan(int x, int y, int e)
+	public static final double c = 800;
+	public DonkeyKong(int x, int y, int e)
 	{
-		sprite = new ImageIcon("src/main/resources/Mega Man/idle1.gif");
-		ataque = 150;
-		vida = 100;
-		precio = 650;
+		sprite = new ImageIcon("src/main/resources/Donkey Kong/idle1.gif");
+		ataque = 500;
+		vida = 350;
+		precio = 600;
 		rango = 5;
 		velocidadDeAtaque = 1.6;
 		this.x = x;
 		this.y = y;
 		espacioEnArreglo = e;
 		label.setIcon(sprite);
-		factory = new FabricaDisparoMegaMan(this);
+		factory = new FabricaDisparoDonkeyKong(this);
 		contador = c;
 	}
 

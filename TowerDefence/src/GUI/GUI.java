@@ -182,7 +182,7 @@ public class GUI extends JFrame{
 			if (e.getButton() == MouseEvent.BUTTON1)
 			{
 				f= new FabricaPersonaje();
-				Personaje plant = f.BulletBill(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
+				Personaje plant = f.DonkeyKong(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
 				j.insertarTorre(plant);
 				plant.getLabel().setBounds(plant.getX(),plant.getY(),75,85);
 				Tablero.add(plant.getLabel());

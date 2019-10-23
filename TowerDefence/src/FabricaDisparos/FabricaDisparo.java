@@ -1,5 +1,6 @@
 package FabricaDisparos;
 
+import Disparos.Disparo;
 import Personajes.*;
 public abstract class FabricaDisparo {
 

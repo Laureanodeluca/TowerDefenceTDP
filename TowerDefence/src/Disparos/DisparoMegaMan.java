@@ -1,16 +1,16 @@
-package FabricaDisparos;
+package Disparos;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Visitor.Visitor;
 
-public class DisparoBulletBill extends Disparo {
-
-	public DisparoBulletBill(int x, int y, int ataque, int velocidaddeAtaque) 
+public class DisparoMegaMan extends Disparo
+{
+	public DisparoMegaMan(int x, int y, int ataque, double velocidaddeAtaque) 
 	{
-		super(x+40, y+25, ataque, velocidaddeAtaque);
-		sprite=new ImageIcon("src/main/resources/Bullet Bill/disparo.gif");
+		super(x+40, y+30, ataque, velocidaddeAtaque);
+		sprite=new ImageIcon("src/main/resources/Mega Man/disparo.png");
 		label = new JLabel(sprite);
 	}
 
@@ -33,5 +33,4 @@ public class DisparoBulletBill extends Disparo {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
