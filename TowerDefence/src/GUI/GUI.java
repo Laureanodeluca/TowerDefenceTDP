@@ -73,9 +73,10 @@ public class GUI extends JFrame{
 
 	private void inicializarGUI() {
 		Tablero = new JPanel();
+		Tablero.setForeground(Color.RED);
 		Tablero.setOpaque(false);
-		Tablero.setBorder(new LineBorder(new Color(0, 0, 0)));
-		Tablero.setBounds(0, 0, 1182, 530);
+		Tablero.setBorder(new LineBorder(new Color(0, 0, 0), 0));
+		Tablero.setBounds(97, 49, 1071, 393);
 		Tablero.setBackground(Color.WHITE);
 		getContentPane().add(Tablero);
 		Tablero.setLayout(null);
@@ -164,7 +165,7 @@ public class GUI extends JFrame{
 		int anchoCelda = Tablero.getWidth()/ancho;
 		int posX = x/anchoCelda;
 		posX = posX*anchoCelda + anchoCelda/2;
-		return posX-anchoCelda/3;
+		return posX-anchoCelda/2;
 	}
 	
 	public int acomodarY(int y, int largo)
@@ -172,7 +173,7 @@ public class GUI extends JFrame{
 		int largoCelda = Tablero.getHeight()/largo;
 		int posY = y/largoCelda;
 		posY = posY*largoCelda + largoCelda/2;
-		return (posY-largoCelda/9);
+		return (posY-largoCelda/2);
 	}
 	
 	class insertarTorre extends MouseAdapter
@@ -182,7 +183,7 @@ public class GUI extends JFrame{
 			if (e.getButton() == MouseEvent.BUTTON1)
 			{
 				f= new FabricaPersonaje();
-				Personaje plant = f.DonkeyKong(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
+				Personaje plant = f.BulletBill(acomodarX(e.getX(), CANT_X),acomodarY(e.getY(), CANT_Y), j.getCantTorres());
 				j.insertarTorre(plant);
 				plant.getLabel().setBounds(plant.getX(),plant.getY(),75,85);
 				Tablero.add(plant.getLabel());
