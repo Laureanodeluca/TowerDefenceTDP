@@ -1,6 +1,6 @@
 package Visitor;
-import Personajes.Personaje;
-import Personajes.Enemigo;
+import Enemigos.Enemigo;
+import Personajes.Torre;
 
 public abstract class Visitor 
 {
@@ -8,7 +8,7 @@ public abstract class Visitor
 	 * Visita a una torre 
 	 * @param p Torre a visitar.
 	 */
-	public abstract void visitarTorre(Personaje p);
+	public abstract void visitarTorre(Torre p);
 	
 	/**
 	 * Visita a un enemigo.

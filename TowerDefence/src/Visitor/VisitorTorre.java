@@ -1,11 +1,11 @@
 package Visitor;
 
-import Personajes.Personaje;
+import Personajes.Torre;
 
 public abstract class VisitorTorre extends Visitor
 {
 
 	@Override
-	public void visitarTorre(Personaje p) {	}
+	public void visitarTorre(Torre p) {	}
 		
 }

@@ -17,7 +17,7 @@ public class Juego
 	{
 		cantTorres = 0;
 		cantDisparos = 0;
-		this.p = new Goomba(gui.acomodarX(1200,10), gui.acomodarY(250,6));
+		this.p = new DarkMan(gui.acomodarX(1200,10), gui.acomodarY(250,6));
 		gui.add(p.getLabel());
 		torre = new Torre[100];
 		disparo = new Disparo[10000];

@@ -1,6 +1,7 @@
 package Personajes;
 import Disparos.Disparo;
 import Objetos.*;
+import State.Estado;
 public abstract class Personaje extends GameObject {
 	
 	protected int ataque;
@@ -8,6 +9,7 @@ public abstract class Personaje extends GameObject {
 	protected int rango;
 	protected double velocidadDeAtaque;
 	protected boolean puedeAtacar;
+	protected Estado estado;
 	
 	/**
 	 * Consulta la fuerza de ataque de la torre.
@@ -95,10 +97,25 @@ public abstract class Personaje extends GameObject {
 	 *
 	 * @return boolean puedeAtacar
 	 */
-
 	public boolean puedeAtacar() {
 		return puedeAtacar;
 	}
 	
+	/**
+	 * Retorna el estado del personaje.
+	 * @return Estado del personaje.
+	 */
+	public Estado getEstado()
+	{
+		return estado;
+	}
 	
+	/**
+	 * Establece el estado e como el nuevo estado del personaje.
+	 * @param e estado del personaje. 
+	 */
+	public void setEstado(Estado e)
+	{
+		estado = e;
+	}
 }

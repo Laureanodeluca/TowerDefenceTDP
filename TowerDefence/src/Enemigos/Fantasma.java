@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Disparos.Disparo;
-import Personajes.Enemigo;
 import Visitor.Visitor;
 
 public class Fantasma extends Enemigo

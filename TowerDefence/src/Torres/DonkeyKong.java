@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import Disparos.Disparo;
 import FabricaDisparos.FabricaDisparoDonkeyKong;
 import Personajes.Torre;
+import State.Normal;
 import Visitor.Visitor;
 
 public class DonkeyKong extends Torre
@@ -24,6 +25,7 @@ public class DonkeyKong extends Torre
 		label.setIcon(sprite);
 		factory = new FabricaDisparoDonkeyKong(this);
 		contador = c;
+		estado = new Normal(c);
 	}
 
 	@Override

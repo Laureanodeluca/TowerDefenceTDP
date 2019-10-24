@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import Disparos.Disparo;
 import FabricaDisparos.*;
 import Personajes.*;
+import State.Normal;
 import Visitor.Visitor;
 
 public class BulletBill extends Torre 
@@ -23,6 +24,7 @@ public class BulletBill extends Torre
 		label.setIcon(sprite);
 		factory = new FabricaDisparoBulletBill(this);
 		contador = c;
+		estado = new Normal(c);
 	}
 
 	@Override

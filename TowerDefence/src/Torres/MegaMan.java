@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import Disparos.Disparo;
 import FabricaDisparos.FabricaDisparoMegaMan;
 import Personajes.Torre;
+import State.Normal;
 import Visitor.Visitor;
 
 public class MegaMan extends Torre
@@ -24,6 +25,7 @@ public class MegaMan extends Torre
 		label.setIcon(sprite);
 		factory = new FabricaDisparoMegaMan(this);
 		contador = c;
+		estado = new Normal(c);
 	}
 
 	@Override

@@ -1,13 +1,13 @@
 package Visitor;
 
-import Personajes.Enemigo;
-import Personajes.Personaje;
+import Enemigos.Enemigo;
+import Personajes.Torre;
 
 public class VisitorContinuarMovimiento extends Visitor
 {
 
 	@Override
-	public void visitarTorre(Personaje p) {
+	public void visitarTorre(Torre p) {
 	}
 
 	@Override

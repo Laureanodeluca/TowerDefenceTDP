@@ -1,7 +1,7 @@
 package Disparos;
 
+import Enemigos.Enemigo;
 import Objetos.GameObject;
-import Personajes.Enemigo;
 import Personajes.Personaje;
 
 public abstract class Disparo  extends GameObject{

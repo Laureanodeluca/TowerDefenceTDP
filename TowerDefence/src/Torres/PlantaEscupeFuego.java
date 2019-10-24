@@ -4,6 +4,7 @@ import javax.swing.*;
 import Disparos.Disparo;
 import FabricaDisparos.FabricaDisparoPlantaEscupeFuego;
 import Personajes.Torre;
+import State.Normal;
 import Visitor.Visitor;
 
 public class PlantaEscupeFuego extends Torre
@@ -24,6 +25,7 @@ public class PlantaEscupeFuego extends Torre
 		label.setIcon(sprite);
 		factory = new FabricaDisparoPlantaEscupeFuego(this);
 		contador = c;
+		estado  = new Normal(c);
 	}
 
 	@Override
@@ -34,15 +36,8 @@ public class PlantaEscupeFuego extends Torre
 	@Override
 	public Disparo atacar()
 	{
-		if (contador > 0)
-			contador = contador-velocidadDeAtaque;
-		else
-		{
-			contador = c;
-			return factory.generarDisparo();
-		}
-		
-		return null;	
+		Disparo d = estado.torre_atacar(velocidadDeAtaque, factory);
+		return d;
 	}
 
 	@Override

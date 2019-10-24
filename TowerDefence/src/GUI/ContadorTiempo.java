@@ -27,7 +27,7 @@ public class ContadorTiempo extends Thread {
 			
 			for (int i = 0; i < elJuego.getCantTorres(); i++)
 			{
-				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() == elJuego.getTorre(i).getX()) && (elJuego.getEnemy().getY() == elJuego.getTorre(i).getY()))
+				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() - elJuego.getTorre(i).getX() < 10) && (elJuego.getEnemy().getY() == elJuego.getTorre(i).getY()))
 				{
 					colision = true;
 					elJuego.getEnemy().accept(new VisitorColisiones());

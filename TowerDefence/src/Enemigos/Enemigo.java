@@ -1,5 +1,6 @@
-package Personajes;
+package Enemigos;
 
+import Personajes.Personaje;
 import Visitor.Visitor;
 
 public abstract class Enemigo extends Personaje
