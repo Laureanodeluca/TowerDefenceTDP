@@ -1,9 +1,7 @@
 package Visitor;
 
-import Enemigos.Enemigo;
-import Personajes.Torre;
-
-public class VisitorEscudo extends Visitor
+import Personajes.*;
+public class VisitorEscudo implements Visitor
 {
 
 	public void visitarTorre(Torre p) {

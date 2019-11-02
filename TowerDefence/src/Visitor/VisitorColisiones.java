@@ -1,9 +1,8 @@
 package Visitor;
 
-import Enemigos.Enemigo;
-import Personajes.Torre;
+import Personajes.*;
 
-public class VisitorColisiones extends Visitor
+public class VisitorColisiones implements Visitor
 {
 
 	@Override

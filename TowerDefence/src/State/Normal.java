@@ -1,8 +1,7 @@
 package State;
 
 import Disparos.Disparo;
-import FabricaDisparos.FabricaDisparo;
-
+import Factory.*;
 public class Normal extends Estado
 {
 	public Normal(double c)
@@ -10,9 +9,8 @@ public class Normal extends Estado
 		contador = c;
 		contadorAux = c;
 	}
-	
-	@Override
-	public Disparo torre_atacar(double velocidadDeAtaque, FabricaDisparo f) {
+/*	
+	public Disparo torre_atacar(double velocidadDeAtaque, ) {
 		if (contador > 0)
 			contador = contador-velocidadDeAtaque;
 		else
@@ -23,5 +21,5 @@ public class Normal extends Estado
 		
 		return null;
 	}
-
+*/
 }

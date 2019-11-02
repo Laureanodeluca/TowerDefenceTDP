@@ -5,43 +5,48 @@ import Visitor.*;
 
 public class ContadorTiempo extends Thread {
 
-	private Juego elJuego;
-	private boolean colision;
+	private Juego juego;
+	private final int NUM_TANDAS = 3;
+	private final int VELOCIDAD = 1000; //en milis
 
-	ContadorTiempo(Juego j) {
-		this.elJuego = j;
+	public ContadorTiempo(Juego j) {
+		this.juego = j;
+		
 	}
 
 	public void run() {
-		while(true){
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			colision = false;
-			for (int j = 0; (j < elJuego.getCantDisparos() && (elJuego.getDisparo(j) != null)); j++)
-			{
-				elJuego.moverDisparo(j, 5);
-			}
+	
+		try {
+			int tandaActual =0;
 			
-			for (int i = 0; i < elJuego.getCantTorres(); i++)
-			{
-				if ((elJuego.getTorre(i) != null) && (elJuego.getEnemy().getX() - elJuego.getTorre(i).getX() < 10) && (elJuego.getEnemy().getY() == elJuego.getTorre(i).getY()))
-				{
-					colision = true;
-					elJuego.getEnemy().accept(new VisitorColisiones());
-					//System.out.println("Encontrado!");
+			while(tandaActual<NUM_TANDAS) {
+				int sizeoleada=0;
+				while(sizeoleada<5) {
+					Thread.sleep(VELOCIDAD);
+					juego.getMapa().moverEnemigos();
+					juego.insertarEnemigo();
+					sizeoleada++;
 				}
+				int descanso=0;
+				while(descanso<5) {
+					Thread.sleep(VELOCIDAD);
+					juego.getMapa().moverEnemigos();
+					descanso++;
+				}
+				
+				tandaActual++;
 			}
 			
-			if (!colision)
-			{
-				elJuego.getEnemy().accept(new VisitorContinuarMovimiento());
-				//System.out.println("Torre eliminada!");
-			}
-			elJuego.moverPersonaje();
 			
+	
+			
+		} catch (InterruptedException exc) {
+			exc.printStackTrace();
 		}
+		juego.getMapa().moverEnemigos();
+
+		
+		//juego.getMapa().moverEnemigos();
+		//juego.insertarEnemigo();
 	}
 }

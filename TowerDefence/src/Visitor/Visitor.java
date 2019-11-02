@@ -1,8 +1,7 @@
 package Visitor;
-import Enemigos.Enemigo;
-import Personajes.Torre;
+import Personajes.*;
 
-public abstract class Visitor 
+public interface Visitor 
 {
 	/**
 	 * Visita a una torre 

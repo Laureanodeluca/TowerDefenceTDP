@@ -1,25 +1,44 @@
 package Disparos;
 
-import Enemigos.Enemigo;
-import Objetos.GameObject;
-import Personajes.Personaje;
+import Mapa.Celda;
 
-public abstract class Disparo  extends GameObject{
-   protected Personaje disparo;
-   int ataque;
-   double velocidadDeAtaque;
-   public Disparo(int x , int y , int ataque , double velocidaddeAtaque) {
-	   this.x=x;
-	   this.y=y;
-	   this.ataque=ataque;
-	   this.velocidadDeAtaque=velocidaddeAtaque;	   
+import Objetos.GameObject;
+import Personajes.*;
+import Visitor.*;
+
+public abstract class Disparo extends GameObject implements Visitor{
+	
+   protected Personaje disparador;
+   protected Celda celda;
+  
+   public Disparo(Personaje p) {
+	   disparador=p;
+	   celda=p.getCelda();
+	   setSprite(p.getSpriteDisparo());
    }
-  public void afectarPersonaje(Enemigo afectarPersonaje) {
+   
+   public Celda getCelda() {
+	   return celda;
+   }
+   
+   public void setCelda(Celda c) {
+	   celda=c;
+   }
+   
+   public void afectarPersonaje(Enemigo afectarPersonaje) {
 	  afectarPersonaje.kill();
   }
   
-  public double getVelocidad()
-  {
-	  return velocidadDeAtaque;
+  public double getVelocidad(){
+	  return disparador.getVelocidadDeAtaque();
   }
+
+	@Override
+	public int kill() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
+
+

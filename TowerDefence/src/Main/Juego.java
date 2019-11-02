@@ -1,138 +1,102 @@
 package Main;
-import Disparos.Disparo;
-import Enemigos.*;
+
+import java.awt.EventQueue;
+import java.util.ArrayList;
+
+import GUI.ContadorTiempo;
 import GUI.GUI;
-import Objetos.GameObject;
+import GUI.ThreadDisparos;
+import Mapa.Mapa;
+import Nivel.*;
 import Personajes.*;
 
-public class Juego 
-{
-	private Torre [] torre;
-	private Disparo [] disparo;
-	private Enemigo p;
-	private int cantTorres;
-	private int cantDisparos;
+public class Juego {
+	private GUI gui;
+	private ThreadDisparos threadDisparo;
+	private Thread tiempo;
+	private Mapa mapa;
+    protected Nivel nivel;
+    protected Torre ultimoComprado;
+    protected int tienda; 
+
+	private Juego() {
+		tienda=2500;
+		gui = new GUI(this);
+		gui.setVisible(true);
+		mapa = new Mapa(this);
+		tiempo = new ContadorTiempo(this);
+		threadDisparo = new ThreadDisparos(this);
+		tiempo.start();
+		nivel = new NivelUno(mapa,30);	
+		threadDisparo.start();
+	}
 	
-	public Juego(GUI gui)
-	{
-		cantTorres = 0;
-		cantDisparos = 0;
-		this.p = new DarkMan(gui.acomodarX(1200,10), gui.acomodarY(250,6));
-		gui.add(p.getLabel());
-		torre = new Torre[100];
-		disparo = new Disparo[10000];
+	public Nivel getNivel() {
+		return nivel;
+	}
+	
+	public void insertarEnemigo() {
+		Enemigo e = nivel.getNextEnemigo();
+		if (e != null)
+			mapa.agregarEnemigo(e);
 	}
 	
 	
-	/**
-	 * Mueve un personaje.
-	 */
-	public void moverPersonaje()
-	{
-		p.mover(p.getVelocidadDeMovimiento());
+	// ---------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI-------------------------------------/
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					new Juego();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	// ---------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI-------------------------------------/
+
+	public Mapa getMapa() {
+		return mapa;
 	}
 	
-	public void moverDisparo(int i, int vel)
-	{
-		disparo[i].mover(-vel);
+	public GUI getGUI() {
+		return gui;
 	}
 	
-	public void detener()
-	{
-		p.mover(-150);
+	public String getMonedas() {
+		return Integer.toString(tienda);
 	}
 	
-	/**
-	 * Retorna un enemigo.
-	 * @return Enemigo.
-	 */
-	public Enemigo getEnemy()
-	{
-		return p;
+	public void setMonedas(int m) {
+		tienda = tienda + m;
 	}
 	
-	/**
-	 * Mata un personaje.
-	 * @return personaje.
-	 */
-	public int killCharacter()
-	{
-		int money = p.kill();
-		p = null;
-		return money;
-	}
-	
-	public void killTower(int i)
-	{
-		torre[i].kill();
-		cantTorres--;
-		torre[i] = null;
-		
-		for (int j = i; j < torre.length-1; j++)
-		{
-			torre[j] = torre[j+1];
-			torre[j+1] = null;
+	public void clickSobreTablero(int fila, int columna) {
+		if(ultimoComprado!=null) {
+			mapa.agregarPersonaje(ultimoComprado, fila, columna);
+			ultimoComprado=null;
 		}
 	}
-	
-	/**
-	 * Inserta un personaje p en el espacio i del arreglo.
-	 * @param i Espacio del arreglo.
-	 * @param p Torre a insertar.
-	 */
-	public void insertarTorre(GameObject p)
-	{
-		torre[cantTorres] = (Torre) p;
-		cantTorres++;
+	//ACORADARSE DE QUE LA TIENDA NO DE NEGATIVO
+	public void clickSobrePEF() {
+		ultimoComprado = new PlantaEscupeFuego();
+		tienda = tienda-100;
 	}
 	
-	/**
-	 * Retorna la torre en el bucket i del arreglo.
-	 * @param i Bucket que contiene la torre que se desea retornar
-	 * @return Torre en el bucket i del arreglo.
-	 */
-	public Torre getTorre(int i)
-	{
-		return torre[i];
+	public void clickSobreMM() {
+		ultimoComprado = new MegaMan();
+		tienda = tienda-200;
 	}
 	
-	/**
-	 * Consulta la cantidad de torres en el mapa.
-	 * @return cantidad de torres en el mapa.
-	 */
-	public int getCantTorres()
-	{
-		return cantTorres;
+	public void clickSobreDK() {
+		ultimoComprado = new DonkeyKong();
+		tienda = tienda-300;
 	}
 	
-	/**
-	 * Consulta el disparo en la posicion i del arreglo.
-	 * @param i Posicion en el arreglo que contiene el disparo.
-	 * @return Disparo en la posicion i.
-	 */
-	public Disparo getDisparo(int i)
-	{
-		return disparo[i];
+	public void clickSobreBB() {
+		ultimoComprado = new BulletBill();
+		tienda = tienda-400;
 	}
-	
-	/**
-	 * Ingresa un disparo en la posicion i del arreglo.
-	 * @param i Posicion i del nuevo disparo en el arreglo.
-	 * @param d Disparo a insertar.
-	 */
-	public void insertarDisparo(Disparo d, int i)
-	{
-		disparo[i] = d;
-		cantDisparos++;
-	}
-	
-	/**
-	 * Retorna la cantidad de disparos activos en el mapa.
-	 * @return cantidad de disparos en el mapa.
-	 */
-	public int getCantDisparos()
-	{
-		return cantDisparos;
-	}
-	
+
 }

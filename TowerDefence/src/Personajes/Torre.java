@@ -1,32 +1,31 @@
 package Personajes;
 
-import FabricaDisparos.FabricaDisparo;
+import javax.swing.Icon;
 
-public abstract class Torre extends Personaje
-{
+import Disparos.Disparo;
+import Disparos.DisparoTorre;
+import Factory.*;
+import Mapa.*;
+public abstract class Torre extends Personaje{
 	protected int precio;
-	protected int espacioEnArreglo;
-	protected FabricaDisparo factory;
 	protected double contador;
 	protected int escudo;
+	protected Celda celda;
 	
-	
+		
 	/**
 	 * Consulta el precio de la torre.
 	 * @return precio de la torre.
 	 */
-	public int getPrecio()
-	{
+	public int getPrecio(){
 		return precio;
 	}
-	
-	
+		
 	/**
 	 * Establece el precio de la torre.
 	 * @param p Precio de la torre.
 	 */
-	public void setPrecio(int p)
-	{
+	public void setPrecio(int p){
 		precio = p;
 	}
 	
@@ -34,8 +33,24 @@ public abstract class Torre extends Personaje
 	 * Le establece un escudo protector a la torre.
 	 * @param i vida del escudo.
 	 */
-	public void setEscudo(int i)
-	{
+	public void setEscudo(int i){
 		escudo = i;
 	}
+	
+	public Celda getCelda() {
+		return celda;
+	}
+	
+	public void setCelda(Celda c) {
+		celda=c;
+	}
+	
+	public Disparo atacar() {
+		return new DisparoTorre(this);
+	}
+	
+	public void accept(Disparo disparo) {
+		disparo.visitarTorre(this);
+	}
+	
 }

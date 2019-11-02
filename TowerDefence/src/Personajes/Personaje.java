@@ -1,6 +1,9 @@
 package Personajes;
+import javax.swing.Icon;
+
 import Disparos.Disparo;
-import Objetos.*;
+import Mapa.Celda;
+import Objetos.GameObject;
 import State.Estado;
 public abstract class Personaje extends GameObject {
 	
@@ -10,6 +13,17 @@ public abstract class Personaje extends GameObject {
 	protected double velocidadDeAtaque;
 	protected boolean puedeAtacar;
 	protected Estado estado;
+	protected Celda c;
+	protected Icon spriteDisparo;
+
+	
+	public Celda getCelda() {
+		return c;
+	}
+	
+	public void setCelda(Celda c) {
+		this.c=c;
+	}
 	
 	/**
 	 * Consulta la fuerza de ataque de la torre.
@@ -27,6 +41,10 @@ public abstract class Personaje extends GameObject {
 	public int getVida()
 	{
 		return vida;
+	}
+	
+	public void restarVida(int ataque) {
+		this.vida -= ataque; //CHEQUEAR MUERTE
 	}
 	
 	/**
@@ -81,6 +99,9 @@ public abstract class Personaje extends GameObject {
 	public void setVelocidadDeAtaque(int v){
 		velocidadDeAtaque = v;
 	}
+	public Icon getSpriteDisparo() {
+		return spriteDisparo;
+	}
 	
 	/**
 	 * Ataca a un personaje p.
@@ -118,4 +139,7 @@ public abstract class Personaje extends GameObject {
 	{
 		estado = e;
 	}
+	
+	public abstract void accept(Disparo disparo);
+	
 }

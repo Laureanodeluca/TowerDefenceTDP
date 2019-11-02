@@ -1,7 +1,7 @@
 package State;
 
 import Disparos.Disparo;
-import FabricaDisparos.FabricaDisparo;
+import Factory.*;
 
 public class BoostVelocidad extends Estado
 {
@@ -10,9 +10,8 @@ public class BoostVelocidad extends Estado
 		contador = cont;
 		contadorAux = cont;
 	}
-	
-	@Override
-	public Disparo torre_atacar(double velocidadDeAtaque, FabricaDisparo f) {
+/*	
+	public Disparo torre_atacar(double velocidadDeAtaque) {
 		if (contador > 0)
 			contador = contador-2*velocidadDeAtaque;
 		else
@@ -23,5 +22,5 @@ public class BoostVelocidad extends Estado
 		
 		return null;	
 	}
-	
+*/	
 }
