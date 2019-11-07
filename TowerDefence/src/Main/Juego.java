@@ -38,8 +38,7 @@ public class Juego {
 	public void insertarEnemigo() {
 		Enemigo e = nivel.getNextEnemigo();
 		if (e != null)
-			mapa.agregarEnemigo(e);
-		
+			mapa.agregarEnemigo(e);		
 	}
 	
 	
