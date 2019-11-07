@@ -11,7 +11,6 @@ public class ContadorTiempo extends Thread {
 
 	public ContadorTiempo(Juego j) {
 		this.juego = j;
-		
 	}
 
 	public void run() {
@@ -31,22 +30,18 @@ public class ContadorTiempo extends Thread {
 				while(descanso<5) {
 					Thread.sleep(VELOCIDAD);
 					juego.getMapa().moverEnemigos();
+
 					descanso++;
 				}
-				
 				tandaActual++;
 			}
-			
-			
-	
-			
+			if(juego.getNivel().noHayMasEnemigos())
+				juego.getNivel().pasarDeNivel();
+				
 		} catch (InterruptedException exc) {
 			exc.printStackTrace();
 		}
 		juego.getMapa().moverEnemigos();
 
-		
-		//juego.getMapa().moverEnemigos();
-		//juego.insertarEnemigo();
 	}
 }

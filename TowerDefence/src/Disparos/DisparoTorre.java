@@ -17,7 +17,10 @@ public class DisparoTorre extends Disparo {
 	public void visitarEnemigo(Enemigo e) {
 		//e.restarVida(disparador.getAtaque());
 		e.kill();
+			
 		System.out.println("colisiono enemigo");
+		System.out.println(""+e.getVida());
+		
 	}
 	
 }

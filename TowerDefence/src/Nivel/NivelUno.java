@@ -1,14 +1,19 @@
 package Nivel;
-import Factory.*;
-import Main.*;
+import java.util.Random;
+
 import Mapa.*;
 
 public class NivelUno extends Nivel {
 
-	public NivelUno(Mapa m, int d) {
-		super(m,d);
-		//dificultad=30;
+	public NivelUno(Mapa m) {
+		super(m);
+		cantEnemigos=10;
+		crearEnemigos();
 	}
 	
+	
+	public Nivel pasarDeNivel() {
+		return new NivelDos(mapa);
+	}
 	
 }

@@ -25,12 +25,15 @@ public abstract class Personaje extends GameObject {
 		this.c=c;
 	}
 	
+	public boolean estaMuerto() {
+		return (vida < 1);	
+	}
+	
 	/**
 	 * Consulta la fuerza de ataque de la torre.
 	 * @return Fuerza de ataque de la torre.
 	 */
-	public int getAtaque()
-	{
+	public int getAtaque(){
 		return ataque;
 	}
 	
@@ -38,8 +41,7 @@ public abstract class Personaje extends GameObject {
 	 * Consulta la vida de la torre.
 	 * @return vida.
 	 */
-	public int getVida()
-	{
+	public int getVida(){
 		return vida;
 	}
 	
@@ -51,8 +53,7 @@ public abstract class Personaje extends GameObject {
 	 * Consulta el rango de la torre.
 	 * @return rango de la torre.
 	 */
-	public int getRango()
-	{
+	public int getRango(){
 		return rango;
 	}
 	
@@ -60,8 +61,7 @@ public abstract class Personaje extends GameObject {
 	 * Consulta la velocidad de ataque de la torre.
 	 * @return velocidad de ataque de la torre.
 	 */
-	public double getVelocidadDeAtaque()
-	{
+	public double getVelocidadDeAtaque(){
 		return velocidadDeAtaque;
 	}
 	
@@ -69,8 +69,7 @@ public abstract class Personaje extends GameObject {
 	 * Establece la fuerza de ataque de la torre.
 	 * @param a Fuerza de ataque.
 	 */
-	public void setAtaque(int a)
-	{
+	public void setAtaque(int a){
 		ataque = a;
 	}
 	
@@ -78,8 +77,7 @@ public abstract class Personaje extends GameObject {
 	 * Establece la vida de la torre.
 	 * @param v Vida de la torre.
 	 */
-	public void setVida(int v)
-	{
+	public void setVida(int v){
 		vida = v;
 	}
 	
@@ -87,8 +85,7 @@ public abstract class Personaje extends GameObject {
 	 * Establece el rango de ataque de la torre.
 	 * @param r Rango de ataque de la torre.
 	 */
-	public void setRango(int r)
-	{
+	public void setRango(int r){
 		rango = r;
 	}
 	

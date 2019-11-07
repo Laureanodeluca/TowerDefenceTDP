@@ -27,7 +27,7 @@ public class Juego {
 		tiempo = new ContadorTiempo(this);
 		threadDisparo = new ThreadDisparos(this);
 		tiempo.start();
-		nivel = new NivelUno(mapa,30);	
+		nivel = new NivelUno(mapa);	
 		threadDisparo.start();
 	}
 	
@@ -39,7 +39,10 @@ public class Juego {
 		Enemigo e = nivel.getNextEnemigo();
 		if (e != null)
 			mapa.agregarEnemigo(e);
+		
 	}
+	
+	
 	
 	
 	// ---------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI-------------------------------------/
@@ -78,25 +81,25 @@ public class Juego {
 			ultimoComprado=null;
 		}
 	}
-	//ACORADARSE DE QUE LA TIENDA NO DE NEGATIVO
+
 	public void clickSobrePEF() {
 		ultimoComprado = new PlantaEscupeFuego();
-		tienda = tienda-100;
+		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
 	public void clickSobreMM() {
 		ultimoComprado = new MegaMan();
-		tienda = tienda-200;
+		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
 	public void clickSobreDK() {
 		ultimoComprado = new DonkeyKong();
-		tienda = tienda-300;
+		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
 	public void clickSobreBB() {
 		ultimoComprado = new BulletBill();
-		tienda = tienda-400;
+		tienda = tienda-ultimoComprado.getPrecio();
 	}
 
 }

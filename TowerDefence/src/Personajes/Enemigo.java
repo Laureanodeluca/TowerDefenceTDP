@@ -5,14 +5,12 @@ import Disparos.Disparo;
 import Disparos.DisparoEnemigo;
 import Mapa.*;
 
-public abstract class Enemigo extends Personaje
-{
+public abstract class Enemigo extends Personaje{
 	protected int velocidadDeMovimiento;
 	protected int monedas;
 	protected boolean enMovimiento = true;
 	protected int movimientoOriginal;
 
-	
 	
 	public void setCelda(Celda p) {
 		celda=p;
@@ -27,6 +25,28 @@ public abstract class Enemigo extends Personaje
 	 */
 	public int getMonedas(){
 		return monedas;
+	}
+		
+	public int kill(){
+		vida = vida -10;
+		return this.monedas;
+	}
+	
+	public Disparo atacar() {
+		return new DisparoEnemigo(this);
+	}
+	
+	public void accept(Disparo disparo) {
+		disparo.visitarEnemigo(this);
+	}
+	
+	public boolean estaMuerto() {
+		return (vida < 1);		
+	}
+	
+	
+	public int getVida() {
+		return vida;
 	}
 	
 	/**
@@ -53,27 +73,11 @@ public abstract class Enemigo extends Personaje
 		monedas = m;
 	}
 	
-	public int kill()
-	{
-		return this.monedas;
-	}
-	
-	/**
-	 * Acepta al visitor v.
-	 * @param v Visitor. 
-	 
-	public void accept(Visitor v)
-	{
-		v.visitarEnemigo(this);
-	}
-	*/
-	
 	/**
 	 * Si el enemigo esta en movimiento, retorna true. Si no lo esta, retorna false.
 	 * @return true si el enemigo esta en movimiento, false si no lo esta.
 	 */
-	public boolean getMovimiento()
-	{
+	public boolean getMovimiento(){
 		return enMovimiento;
 	}
 	
@@ -81,8 +85,7 @@ public abstract class Enemigo extends Personaje
 	 * Cambia el movimiento del enemigo.
 	 * @param b True: el enemigo esta en movimiento. False: no lo esta.
 	 */
-	public void setMovimiento(boolean b)
-	{
+	public void setMovimiento(boolean b){
 		enMovimiento = b;
 	}
 	
@@ -90,17 +93,8 @@ public abstract class Enemigo extends Personaje
 	 * Velocidad de movimiento del enemigo en su estado por defecto, es decir, sin estar detenido ni bajo ningun otro efecto.
 	 * @return
 	 */
-	public int getMovimientoOriginal()
-	{
+	public int getMovimientoOriginal(){
 		return movimientoOriginal;
-	}
-	
-	public Disparo atacar() {
-		return new DisparoEnemigo(this);
-	}
-	
-	public void accept(Disparo disparo) {
-		disparo.visitarEnemigo(this);
 	}
 	
 }

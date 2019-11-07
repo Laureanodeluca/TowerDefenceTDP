@@ -21,13 +21,5 @@ public class Fantasma extends Enemigo
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 	}	
-	
-/**
-	public void accept(Visitor v)
-	{
-		v.visitarEnemigo(this);
-	}
-*/
-	
 
 }

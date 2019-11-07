@@ -67,7 +67,6 @@ public class Mapa {
 	  	ListaTorres.add(t);
 	  	t.setCelda(celda);
 	  	juego.getGUI().agregarAlTablero(t.getLabel(), t.getCelda());
-	  	
 	  }
   }
   
@@ -82,13 +81,62 @@ public class Mapa {
 			  Celda nextCelda = mapa[c.getI()][c.getJ()-1];
 			  if(nextCelda.isEmpty()) {
 				  c.removePersonaje();
-				  nextCelda.addPersonaje(e);
-				  e.setCelda(nextCelda);
-				  juego.getGUI().agregarAlTablero(e.getLabel(), e.getCelda());
+				  if(!e.estaMuerto()) { 
+					  nextCelda.addPersonaje(e);
+				  	  e.setCelda(nextCelda);
+				  	  juego.getGUI().agregarAlTablero(e.getLabel(), e.getCelda());
+				  }
+				  else {
+					  juego.getGUI().sacarDelTablero(e.getLabel());
+					  juego.setMonedas(e.getMonedas());
+					  juego.getGUI().refrescarTienda();
+				  }
 			  } 
-		  }    
-	  }		
+		  }
+		  else juego.getGUI().juegoTerminado();
+	  }	  
+	  removerMuertos();	  
+  }		
+ 
+  
+  public void moverDisparos() {
+	  List<Disparo> aRemover = new LinkedList<Disparo>();
+	  for (Disparo d: ListaDisparos) {
+		  Celda disp = d.getCelda();
+		  
+		  if (disp.getJ()!=9) {
+			  Celda nc = mapa[disp.getI()][disp.getJ()+1];	  
+			  if (!nc.isEmpty()) {//Hay un enemigo en la celda
+				  nc.getPersonaje().accept(d);
+			  }
+			  else { //No hay enemigo en la celda.
+				  disp.removeDisparo();
+				  nc.addDisparo(d);
+				  d.setCelda(nc);
+				  juego.getGUI().agregarAlTablero(d.getLabel(), d.getCelda());
+			  } 
+		 }
+		 else {
+			  aRemover.add(d); // muere el coso
+		  }
+	  }
+	  ListaDisparos.removeAll(aRemover);  
   }
+  
+  
+  public void removerMuertos() {
+	  LinkedList<Enemigo> muertos = new LinkedList<Enemigo>();
+	  for(Enemigo e : ListaEnemigos) {
+		  if(e.estaMuerto()) { 
+			  muertos.add(e);
+			  e.setSprite(null);
+		  }
+	  }
+	  for(Enemigo m : muertos)
+		  ListaEnemigos.remove(m);
+  }
+  
+  
   /**
   public void moverDisparos() {
 	  List<Disparo> aRemover = new LinkedList<Disparo>();
@@ -117,39 +165,6 @@ public class Mapa {
 	  }
 	  ListaDisparos.removeAll(aRemover);
   }**/
-  
-  public void moverDisparos() {
-	  List<Disparo> aRemover = new LinkedList<Disparo>();
-	  for (Disparo d: ListaDisparos) {
-		  Celda c = d.getCelda();
-		  
-		  if (c.getJ()!=9) {
-			  Celda nc = mapa[c.getI()][c.getJ()+1];
-			  
-			  if (!nc.isEmpty())//Hay un enemigo en la celda
-				  nc.getPersonaje().accept(d);
-			  else //No hay enemigo en la celda.
-			  {
-				  c.removeDisparo();
-				  nc.addDisparo(d);
-				  d.setCelda(nc);
-				  juego.getGUI().agregarAlTablero(d.getLabel(), d.getCelda());
-			  }
-			  
-			  
-		  }
-		  else
-		  {
-			  aRemover.add(d); // muere el coso
-		  }
-	  }
-	  ListaDisparos.removeAll(aRemover);
-  }
-  
-  
-  
-  
-  
  
   
 }

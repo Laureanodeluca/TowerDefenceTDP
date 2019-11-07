@@ -112,6 +112,20 @@ public class GUI extends JFrame{
 		Tablero.add(l);
 		l.setBounds(c.getJ()*getAnchoCelda(), c.getI()*getAltoCelda(), getAnchoCelda(), getAltoCelda());
 	}
+	
+	public void sacarDelTablero(JLabel l) {
+		Tablero.remove(l);
+		
+	}
+	
+	public void refrescarTienda() {
+		cantMonedas.setText(j.getMonedas());
+	}
+	
+	public void juegoTerminado() {
+		JOptionPane.showMessageDialog(Tablero, "PERDISTE!!!!!!1");
+		
+	}
 //-----------------------COMANDOS------------------------------------------------------------------------/	
 
 //---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
@@ -157,7 +171,7 @@ public class GUI extends JFrame{
 //---------------------------OYENTE BOTONES DE TORRES---------------------------------------------------------/
 	private class OyenteClickPEF implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(j.getMonedas())>99) {
+			if(Integer.parseInt(j.getMonedas())>499) {
 				j.clickSobrePEF();
 				cantMonedas.setText(j.getMonedas());
 			}	
@@ -168,7 +182,7 @@ public class GUI extends JFrame{
 	
 	private class OyenteClickMM implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(j.getMonedas())>199) {
+			if(Integer.parseInt(j.getMonedas())>649) {
 				j.clickSobreMM();	
 				cantMonedas.setText(j.getMonedas());
 			}	
@@ -179,7 +193,7 @@ public class GUI extends JFrame{
 	
 	private class OyenteClickDK implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(j.getMonedas())>299) {
+			if(Integer.parseInt(j.getMonedas())>599) {
 				j.clickSobreDK();
 				cantMonedas.setText(j.getMonedas());
 			}
@@ -190,7 +204,7 @@ public class GUI extends JFrame{
 	
 	private class OyenteClickBB implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(j.getMonedas())>399) {
+			if(Integer.parseInt(j.getMonedas())>499) {
 				j.clickSobreBB();
 				cantMonedas.setText(j.getMonedas());
 			}

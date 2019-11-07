@@ -16,7 +16,7 @@ public class ThreadDisparos extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(100);
+				Thread.sleep(200);
 				mapa.getTorres();
 				for(Torre t : mapa.getTorres()) {
 					mapa.agregarDisparo(t.atacar());
@@ -26,20 +26,6 @@ public class ThreadDisparos extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			/*for (int i = 0; (i < juego.getCantTorres()) && (juego.getTorre(i)!=null); i++)
-			{
-				
-				Disparo d = juego.getTorre(i).atacar();
-				if (d != null)
-				{
-					juego.insertarDisparo(d, juego.getCantDisparos());
-					
-					d.getLabel().setBounds(d.getX(), d.getY(), 21, 21);
-					miGui.getTablero().add(d.getLabel());
-					miGui.repaint();
-				}
-			}		*/	
 		}
 	}
 }
