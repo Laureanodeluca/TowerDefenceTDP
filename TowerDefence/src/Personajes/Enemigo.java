@@ -1,6 +1,5 @@
 package Personajes;
 
-import Visitor.Visitor;
 import Disparos.Disparo;
 import Disparos.DisparoEnemigo;
 import Mapa.*;
