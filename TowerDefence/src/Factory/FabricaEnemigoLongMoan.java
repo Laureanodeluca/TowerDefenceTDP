@@ -5,17 +5,11 @@ public class FabricaEnemigoLongMoan extends FabricaEnemigo {
     public static FabricaEnemigoLongMoan instance=null;
     
     public static FabricaEnemigoLongMoan getFabricaEnemigoLongMoan() {
-    	if(instance==null) {
-    		instance=new FabricaEnemigoLongMoan();
-    	}
+    	if(instance==null) instance=new FabricaEnemigoLongMoan();
    	return instance;
     }
     
-   private FabricaEnemigoLongMoan() {
-	   super();
-   }
+   private FabricaEnemigoLongMoan() {super();}
    
-   public Enemigo crearEnemigo() {
-	   return new LongMoan();
-   }
+   public Enemigo crearEnemigo() {return new LongMoan();}
 }

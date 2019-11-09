@@ -1,15 +1,13 @@
 package Personajes;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Disparos.Disparo;
+import PowerUps.*;
 
-public class LongMoan extends Enemigo
-{
-	public LongMoan()
-	{
-
+public class LongMoan extends Enemigo{
+	public LongMoan(){
 		sprite = new ImageIcon("src/Main/resources/LongMoan/idle1.gif");
 		this.ataque = 65;
 		this.vida = 65;
@@ -19,8 +17,7 @@ public class LongMoan extends Enemigo
 		this.rango = 0;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
+		estado = new Normal(this);
+		random = new Random();
 	}
-
-
-
 }

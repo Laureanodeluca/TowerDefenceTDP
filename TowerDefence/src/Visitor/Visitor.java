@@ -1,17 +1,7 @@
 package Visitor;
 import Personajes.*;
 
-public interface Visitor 
-{
-	/**
-	 * Visita a una torre 
-	 * @param p Torre a visitar.
-	 */
+public interface Visitor {
 	public abstract void visitarTorre(Torre p);
-	
-	/**
-	 * Visita a un enemigo.
-	 * @param e Enemigo a visitar.
-	 */
 	public abstract void visitarEnemigo(Enemigo e);	
 }

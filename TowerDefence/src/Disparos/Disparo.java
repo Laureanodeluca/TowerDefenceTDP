@@ -10,13 +10,17 @@ public abstract class Disparo extends GameObject implements Visitor{
 	
    protected Personaje disparador;
    protected Celda celda;
+   protected boolean estaVivo;
   
    public Disparo(Personaje p) {
+	   estaVivo=true;
 	   disparador=p;
 	   celda=p.getCelda();
 	   setSprite(p.getSpriteDisparo());
    }
-   
+   public boolean getVida() {return estaVivo;}
+   public void setVida(boolean d) {estaVivo=d;}
+  
    public Celda getCelda() {
 	   return celda;
    }
@@ -25,19 +29,9 @@ public abstract class Disparo extends GameObject implements Visitor{
 	   celda=c;
    }
    
-   public void afectarPersonaje(Enemigo afectarPersonaje) {
-	  afectarPersonaje.kill();
-  }
-  
   public double getVelocidad(){
 	  return disparador.getVelocidadDeAtaque();
   }
-
-	@Override
-	public int kill() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 }
 

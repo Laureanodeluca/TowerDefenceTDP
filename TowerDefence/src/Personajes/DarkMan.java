@@ -1,14 +1,13 @@
 package Personajes;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Disparos.Disparo;
+import PowerUps.*;
 
-public class DarkMan extends Enemigo
-{
-	public DarkMan()
-	{
+public class DarkMan extends Enemigo{
+	public DarkMan(){
 		sprite = new ImageIcon("src/Main/resources/DarkMan/idle1.gif");
 		this.ataque = 150;
 		this.vida = 100;
@@ -18,6 +17,8 @@ public class DarkMan extends Enemigo
 		this.rango = 50;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
+		estado = new Normal(this);
+		random = new Random();
 	}
 
 

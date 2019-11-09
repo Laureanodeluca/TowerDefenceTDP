@@ -1,22 +1,14 @@
 package GUI;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-
 import Main.Juego;
-import Personajes.*;
-import Factory.*;
-//import Visitor.*;
 import Mapa.*;
-
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame{
@@ -27,8 +19,6 @@ public class GUI extends JFrame{
 	private JPanel Monedas;
 	private JLabel LabelMonedas;
 	private JLabel cantMonedas;
-	private static final int CANT_X = 10;
-	private static final int CANT_Y = 6;
 	private Juego j;
 	private JLabel displayMonedas;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
@@ -37,11 +27,11 @@ public class GUI extends JFrame{
 	public GUI(Juego j) {	
 		super("Tower Defense");
 		this.j = j;
+		setLookAndFeel();
 		setAutoRequestFocus(false);
 		setForeground(Color.WHITE);
 		inicializarGUI();
 		inicializarBotonesTorres();
-		//inicializarPanelMonedas();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 700);
 		setVisible(true);
@@ -96,17 +86,11 @@ public class GUI extends JFrame{
 
 //-----------------------COMANDOS------------------------------------------------------------------------/	
 
-	public int getAltoCelda() {
-		return Tablero.getHeight()/6;
-	}
+	public int getAltoCelda() {return Tablero.getHeight()/6;}
 	
-	public int getAnchoCelda() {
-		return Tablero.getWidth()/10;		
-	}
+	public int getAnchoCelda() {return Tablero.getWidth()/10;}
 
-	public JPanel getTablero(){
-		return Tablero;
-	}
+	public JPanel getTablero(){return Tablero;}
 	
 	public void agregarAlTablero(JLabel l, Celda c) {
 		Tablero.add(l);
@@ -115,16 +99,31 @@ public class GUI extends JFrame{
 	
 	public void sacarDelTablero(JLabel l) {
 		Tablero.remove(l);
-		
+		Tablero.repaint();
 	}
 	
-	public void refrescarTienda() {
-		cantMonedas.setText(j.getMonedas());
-	}
+	public void refrescarTienda() {cantMonedas.setText(j.getMonedas());}
 	
 	public void juegoTerminado() {
-		JOptionPane.showMessageDialog(Tablero, "PERDISTE!!!!!!1");
-		
+		int answer = JOptionPane.showConfirmDialog(null, "Juego finalizado, desea volver a jugar?");
+		if ( answer == JOptionPane.YES_OPTION) {
+			j = new Juego();
+			dispose();
+		}
+		else if(answer == JOptionPane.NO_OPTION) {
+			dispose();
+		}
+	}
+	
+	public void setLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 //-----------------------COMANDOS------------------------------------------------------------------------/	
 
@@ -162,7 +161,6 @@ public class GUI extends JFrame{
 			int alto = Tablero.getHeight()/6;		
 			int columna = e.getX()/ancho;
 			int fila = e.getY()/alto; 
-			
 			j.clickSobreTablero(fila, columna);
 		}
 	}
@@ -175,8 +173,7 @@ public class GUI extends JFrame{
 				j.clickSobrePEF();
 				cantMonedas.setText(j.getMonedas());
 			}	
-			else
-				System.out.println("No se puede realizar esta compra");
+			else System.out.println("No se puede realizar esta compra");
 		}
 	}
 	
@@ -186,8 +183,7 @@ public class GUI extends JFrame{
 				j.clickSobreMM();	
 				cantMonedas.setText(j.getMonedas());
 			}	
-			else
-				System.out.println("No se puede realizar esta compra");
+			else System.out.println("No se puede realizar esta compra");
 		}
 	}
 	
@@ -197,8 +193,7 @@ public class GUI extends JFrame{
 				j.clickSobreDK();
 				cantMonedas.setText(j.getMonedas());
 			}
-			else
-				System.out.println("No se puede realizar esta compra");
+			else System.out.println("No se puede realizar esta compra");
 		}
 	}
 	
@@ -208,8 +203,7 @@ public class GUI extends JFrame{
 				j.clickSobreBB();
 				cantMonedas.setText(j.getMonedas());
 			}
-			else
-				System.out.println("No se puede realizar esta compra");
+			else System.out.println("No se puede realizar esta compra");
 		}	
 	}
 //---------------------------OYENTE BOTONES DE TORRES---------------------------------------------------------/

@@ -1,5 +1,5 @@
 package Personajes;
-
+import java.util.Random;
 import Disparos.Disparo;
 import Disparos.DisparoEnemigo;
 import Mapa.*;
@@ -9,26 +9,15 @@ public abstract class Enemigo extends Personaje{
 	protected int monedas;
 	protected boolean enMovimiento = true;
 	protected int movimientoOriginal;
-
+	protected boolean tienePowerUp;
+	protected Random random;
 	
-	public void setCelda(Celda p) {
-		celda=p;
-	}
 	
-	public Celda getCelda() {
-		return celda;
-	}
-	/**
-	 * Retorna la cantidad de monedas que suelta cada enemigo.
-	 * @return Cantidad de monedas soltadas por el enemigo.
-	 */
-	public int getMonedas(){
-		return monedas;
-	}
+	public boolean tienePowerUp() {
+		int rdm = random.nextInt(10);
+		if(rdm==3) tienePowerUp=true;
 		
-	public int kill(){
-		vida = vida -10;
-		return this.monedas;
+		return tienePowerUp;
 	}
 	
 	public Disparo atacar() {
@@ -39,61 +28,26 @@ public abstract class Enemigo extends Personaje{
 		disparo.visitarEnemigo(this);
 	}
 	
-	public boolean estaMuerto() {
-		return (vida < 1);		
-	}
+	public void setCelda(Celda p) {celda=p;}
 	
+	public Celda getCelda() {return celda;}
+
+	public int getMonedas(){return monedas;}
 	
-	public int getVida() {
-		return vida;
-	}
+	public void setMonedas(int m){monedas = m;}
 	
-	/**
-	 * Retorna la velocidad de movimiento del enemigo.
-	 * @return velocidad de movimiento del enemigo.
-	 */
-	public int getVelocidadDeMovimiento(){
-		return velocidadDeMovimiento;
-	}
+	public boolean estaMuerto() {return (vida < 1);}
 	
-	/**
-	 * Le asigna la velocidad de movimiento v al enemigo.
-	 * @param v Nueva velocidad de movimiento.
-	 */
-	public void setVelocidadDeMovimiento(int v){
-		velocidadDeMovimiento = v;
-	}
+	public int getVida() {return vida;}
+
+	public int getVelocidadDeMovimiento(){return velocidadDeMovimiento;}
+
+	public void setVelocidadDeMovimiento(int v){velocidadDeMovimiento = v;}
+
+	public boolean getMovimiento(){return enMovimiento;}
 	
-	/**
-	 * Le asigna una cantidad de monedas al personaje.
-	 * @param m Cantidad de monedas.
-	 */
-	public void setMonedas(int m){
-		monedas = m;
-	}
+	public void setMovimiento(boolean b){enMovimiento = b;}
 	
-	/**
-	 * Si el enemigo esta en movimiento, retorna true. Si no lo esta, retorna false.
-	 * @return true si el enemigo esta en movimiento, false si no lo esta.
-	 */
-	public boolean getMovimiento(){
-		return enMovimiento;
-	}
-	
-	/**
-	 * Cambia el movimiento del enemigo.
-	 * @param b True: el enemigo esta en movimiento. False: no lo esta.
-	 */
-	public void setMovimiento(boolean b){
-		enMovimiento = b;
-	}
-	
-	/**
-	 * Velocidad de movimiento del enemigo en su estado por defecto, es decir, sin estar detenido ni bajo ningun otro efecto.
-	 * @return
-	 */
-	public int getMovimientoOriginal(){
-		return movimientoOriginal;
-	}
+	public int getMovimientoOriginal(){return movimientoOriginal;}
 	
 }

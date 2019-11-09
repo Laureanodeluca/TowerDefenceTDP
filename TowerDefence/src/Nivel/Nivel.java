@@ -1,6 +1,5 @@
 package Nivel;
 import Factory.*;
-import Main.*;
 import Mapa.*;
 import Personajes.*;
 import java.util.*;
@@ -46,13 +45,10 @@ public abstract class Nivel  {
 	
 	public Enemigo getNextEnemigo(){
 		if (enemigos.isEmpty()) return null;
-		
 		return enemigos.remove(0);
 	}
 	
-	public boolean noHayMasEnemigos() {
-		return enemigos.isEmpty();
-	}
+	public boolean noHayMasEnemigos() {return enemigos.isEmpty();}
 	
 	public abstract Nivel pasarDeNivel();
 	

@@ -4,17 +4,11 @@ public class FabricaEnemigoFantasma extends FabricaEnemigo {
     public static FabricaEnemigoFantasma instance=null;
     
     public static FabricaEnemigoFantasma getFabricaEnemigoFantasma() {
-    	if(instance==null) {
-    		instance=new FabricaEnemigoFantasma();
-    	}
+    	if(instance==null) instance=new FabricaEnemigoFantasma();
    	return instance;
     }
     
-   private FabricaEnemigoFantasma() {
-	   super();
-   }
+   private FabricaEnemigoFantasma() {super();}
    
-   public Enemigo crearEnemigo() {
-	   return new Fantasma();
-   }
+   public Enemigo crearEnemigo() {return new Fantasma();}
 }

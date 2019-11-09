@@ -1,16 +1,14 @@
 package Personajes;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Disparos.Disparo;
-import Visitor.Visitor;
+import PowerUps.*;
 
-public class Fantasma extends Enemigo
-{
+public class Fantasma extends Enemigo{
 	
-	public Fantasma()
-	{
+	public Fantasma(){
 		sprite = new ImageIcon("src/Main/resources/Fantasma/idle1.png");
 		this.ataque = 25;
 		this.vida = 55;
@@ -20,6 +18,7 @@ public class Fantasma extends Enemigo
 		this.rango = 0;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
+		estado = new Normal(this);
+		random = new Random();
 	}	
-
 }

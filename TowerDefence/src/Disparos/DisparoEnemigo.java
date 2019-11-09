@@ -13,7 +13,6 @@ public class DisparoEnemigo extends Disparo {
 	@Override
 	public void visitarTorre(Torre p) {
 		p.restarVida(disparador.getAtaque());
-		p.kill();
 		System.out.println("mierda");
 	}
 

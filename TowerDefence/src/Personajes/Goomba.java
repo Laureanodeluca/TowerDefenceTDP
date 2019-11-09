@@ -1,15 +1,15 @@
 package Personajes;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Disparos.Disparo;
+import PowerUps.*;
 
-public class Goomba extends Enemigo
-{
+
+public class Goomba extends Enemigo{
 
 	public Goomba(){
-
 		sprite = new ImageIcon("src/Main/resources/Goomba/idle1.gif");
 		this.ataque = 50;
 		this.vida = 75;
@@ -19,8 +19,7 @@ public class Goomba extends Enemigo
 		this.rango = 0;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
+		estado = new Normal(this);
+		random = new Random();
 	}
-
-
-
 }

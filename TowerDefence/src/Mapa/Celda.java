@@ -1,6 +1,4 @@
 package Mapa;
-import java.util.*;
-
 import Disparos.Disparo;
 import Personajes.*;
 

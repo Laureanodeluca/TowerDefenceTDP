@@ -5,17 +5,11 @@ public class FabricaEnemigoGoomba extends FabricaEnemigo {
     public static FabricaEnemigoGoomba instance=null;
     
     public static FabricaEnemigoGoomba getFabricaEnemigoGoomba() {
-    	if(instance==null) {
-    		instance=new FabricaEnemigoGoomba();
-    	}
+    	if(instance==null)instance=new FabricaEnemigoGoomba();
    	return instance;
     }
     
-   private FabricaEnemigoGoomba() {
-	   super();
-   }
+   private FabricaEnemigoGoomba() {super(); }
    
-   public Enemigo crearEnemigo() {
-	   return new Goomba();
-   }
+   public Enemigo crearEnemigo() {return new Goomba();}
 }

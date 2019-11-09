@@ -10,14 +10,12 @@ public class DisparoTorre extends Disparo {
 		super(p);
 	}
 
-	@Override
+	
 	public void visitarTorre(Torre p) {	}
 
-	@Override
 	public void visitarEnemigo(Enemigo e) {
-		//e.restarVida(disparador.getAtaque());
-		e.kill();
-			
+		e.restarVida(disparador.getAtaque());
+		this.setVida(false);
 		System.out.println("colisiono enemigo");
 		System.out.println(""+e.getVida());
 		
